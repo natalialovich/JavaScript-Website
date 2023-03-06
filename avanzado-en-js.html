@@ -1,0 +1,397 @@
+<!DOCTYPE HTML>
+<!--Trabajo final. Presentado por Natalia Lovich para la asignatura de programación web de SEAS-->
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicios de JavaScript</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <!--enlace a la hoja de estilos-->
+    <link rel="stylesheet" href="styles.css">
+    <!--enlace a los scripts-->
+    <script src="mis-scripts.js"></script>
+    <!--Fuente para el encabezado de la página-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Roboto+Condensed&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1>JavaScript</h1>
+        <h3 id="subtitulo">Para programación web</h3>
+        <nav>
+            <ul>
+                <li class="nav-item uno"><a href="index.html">JavaScript</a></li>
+                <li class="nav-item dos"><a href="dom-y-eventos.html">DOM y Eventos</a></li>
+                <li class="nav-item tres"><a href="avanzado-en-js.html">Avanzado en JS</a></li>
+                <li class="nav-item cuatro"><a href="ajax-y-jquery.html">AJAX y jQuery</a></li>
+                <li class="nav-item cinco"><a href="html5-y-css3.html">HTML5 y CSS3</a></li>
+            </ul>
+        </nav>
+    </header>
+    <article class="contenedor">
+        <div class="contenedor-tabs">
+            <button id="default-tab" class="tab" onclick="cambiarTema(event, 'formularios')">Formularios</button>
+            <button class="tab" onclick="cambiarTema(event, 'validacion')">Validación</button>
+            <div class="dropdown">
+                <button class="tab" id="tab-ejercicios"
+                    onclick="cambiarTema(event, 'un2ejercicios')">Ejercicios</button>
+                <a class="tab-secundaria" id="tab-ej-1" onclick="cambiarTema(event, 'un2ejercicio1')">Textarea máximo de
+                    carácteres</a>
+                <a class="tab-secundaria" id="tab-ej-2" onclick="cambiarTema(event, 'un2ejercicio2')">Validación de un
+                    formulario</a>
+                <a class="tab-secundaria" id="tab-ej-3" onclick="cambiarTema(event, 'un2ejercicio3')">Cuenta Regresiva</a>
+            </div>
+        </div>
+        <div id="formularios" class="contenedor-desc">
+            <h2 class="desc-titulo">Propiedades de los formularios</h2>
+            <p class="descripcion">
+                El navegador crea automáticamente un array llamado <span class="estilo-codigo">forms</span> y un array
+                llamado <span class="estilo-codigo">elements</span> por cada uno de los formularios de la página cuando
+                se carga una página web, el array <span class="estilo-codigo">forms</span> contiene la referencia a
+                todos los formularios de la página.<br><br>
+                Para acceder a él, se utiliza <span class="estilo-codigo">document.forms</span> y para acceder al primer
+                formulario de la página utilizamos <span class="estilo-codigo">document.forms[0] </span>.<br><br>
+                Cada array <span class="estilo-codigo">elements</span> contiene la referencia a todos los elementos
+                (botones, cuadros de texto, listas desplegables, etc.) de ese formulario. Utilizando la sintaxis de los
+                arrays, la siguiente instrucción obtiene el primer elemento del primer formulario de la página:</p>
+            <div class="descripcion">
+                <p class="estilo-codigo">document.forms[0].elements[0];</p>
+            </div>
+            <p class="descripcion">
+                La sintaxis de los arrays no siempre es tan breve. El siguiente ejemplo muestra cómo obtener
+                directamente el
+                último elemento del primer formulario de la página:</p>
+            <div class="descripcion">
+                <p class="estilo-codigo">document.forms[0].elements[document.forms[0].elements.length-1]; </p>
+            </div>
+            <p class="descripcion">Aunque siempre debe evitarse el acceso a los formularios de una página mediante el
+                array <span class="estilo-codigo">document.forms</span> ya que el orden de los formularios se puede
+                cambiar en una
+                página web. Una forma de evitar los problemas del procedimiento anterior consiste en acceder a los
+                formularios de una página a través de su atributo “name” o a través de su atributo “id”.</p>
+            <div class="descripcion">
+                <p class="estilo-codigo">var formularioPrincipal = document.formulario;
+                    var formularioSecundario = document.otro_formulario;
+
+                </p>
+            </div>
+            <p class="descripcion">Los elementos de los formularios también se pueden acceder directamente mediante su
+                atributo name:</p>
+            <div class="descripcion">
+                <p class="estilo-codigo">var formularioPrincipal = document.formulario;
+                    var primerElemento = document.formulario.elemento;
+
+                </p>
+            </div>
+
+            <p class="descripcion">Cada elemento dispone de las siguientes propiedades útiles para el desarrollo de las
+                aplicaciones:</p>
+            <ul>
+                <li class="lista-desc">type: indica el tipo de elemento que se trata. Para los elementos de tipo “input”
+                    (text, button,
+                    checkbox, etc.) coincide con el valor de su atributo type. Para las listas desplegables normales
+                    (elemento “select”) su valor es select-one, lo que permite diferenciarlas de las listas que permiten
+                    seleccionar varios elementos a la vez y cuyo tipo es select-multiple. Por último, en los elementos
+                    de tipo "textarea", el valor de type es textarea.</li>
+                <li class="lista-desc">form: es una referencia directa al formulario al que pertenece el elemento. Así,
+                    para acceder al
+                    formulario de un elemento, se puede utilizar document.getElementById("id_del_elemento").form.</li>
+                <li class="lista-desc">name: obtiene el valor del atributo name de HTML. Solamente se puede leer su
+                    valor, por lo que no se
+                    puede modificar. .</li>
+                <li class="lista-desc">value: permite leer y modificar el valor del atributo value de XHTML. Para los
+                    campos de texto
+                    (input type="text" y textarea) obtiene el texto que ha escrito el usuario. Para los botones obtiene
+                    el texto que se muestra en el botón. Para los elementos checkbox y radiobutton no es muy útil, como
+                    se verá más adelante.</li>
+            </ul>
+
+            </p>
+        </div>
+        <div id="validacion" class="contenedor-desc">
+            <h2 class="desc-titulo">Validación</h2>
+            <p class="descripcion">
+                La validación de un formulario consiste en llamar a una función de validación cuando el usuario pulsa
+                sobre el botón de envío del formulario. En esta función, se comprueban si los valores que ha introducido
+                el usuario cumplen las restricciones impuestas por la aplicación. <br><br>
+                Aunque existen tantas posibles comprobaciones como elementos de formulario diferentes, algunas
+                comprobaciones son muy habituales: que se rellene un campo obligatorio, que se seleccione el valor de
+                una lista desplegable, que la dirección de email indicada sea correcta, que la fecha introducida sea
+                lógica, que se haya introducido un número donde así se requiere, etc. (sacado de
+                www.arkaitzgarro.com)<br><br>
+
+            </p>
+        </div>
+        <div id="un2ejercicios" class="contenedor-desc">
+            <div class="cont-btn-ej">
+                <a class="boton-ej" onclick="cambiarTema(event, 'un2ejercicio1')">Textarea máximo de carácteres</a>
+                <a class="boton-ej" onclick="cambiarTema(event, 'un2ejercicio2')">Validación de un formulario</a>
+                <a class="boton-ej" onclick="cambiarTema(event, 'un2ejercicio3')">Cuenta regresiva</a>
+            </div>
+        </div>
+        <div id="un2ejercicio1" class="contenedor-desc">
+            <div class="div-ejercicios">
+                <h2>Textarea máximo de carácteres</h2>
+                <h3>Descripción:</h3>
+                <p>En esta aplicación web tenemos un recuadro donde el usuario puede escribir hasta 100 carácteres, esto lo definimos gracias al atributo &quot;maxlength&quot; en el elemento &lt;input&gt;. Mientras el usuario va escribiendo, se va actualizando el número de carácteres que le quedan y se muestran en un mensaje. Al llegar al máximo este mensaje cambia para hacerle saber que ha llegado al máximo de carácteres permitidos.</p>
+                <iframe src="ejerciciosjs/form1/index.html"></iframe>
+                <div class="tabs2">
+                    <div class="boton-codigo">
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-1-html')">HTML</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-1-js')">JS</button>
+                    </div>
+                    <div class="cont-ej" id="ej-1-html">
+                        <p class="estilo-codigo">
+                            &lt;!DOCTYPE html&gt;<br>
+                            &lt;html lang=&quot;es&quot;&gt;<br>
+
+                            &lt;head&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;meta charset=&quot;utf-8&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;script src =&quot;scrips.js&quot;&gt;&lt;/script&gt;<br>
+                            &lt;/head&gt;<br>
+
+                            &lt;body&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;div id=&quot;info&quot;&gt;Máximo 100 caracteres&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;textarea id=&quot;texto&quot; onkeyup=&quot;actualizaInfo(100)&quot;
+                            rows=&quot;6&quot;cols=&quot;30&quot; maxlength=&quot;100&quot;&gt;&lt;/textarea&gt;<br>
+                            &lt;/body&gt;<br>
+
+                            &lt;/html&gt;<br>
+                        </p>
+                    </div>
+
+                    <div class="cont-ej" id="ej-1-js">
+                        <p class="estilo-codigo">
+                            function actualizaInfo(maxCaracteres) {<br>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;let elemento = document.getElementById("texto");<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;let info = document.getElementById("info");<br>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;if (elemento.value.length >= maxCaracteres) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info.textContent = "Ya has llegado al máximo
+                            de carácteres permitidos";<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info.innerHTML = "Puedes escribir hasta " +
+                            (maxCaracteres - elemento.value.length) + " caracteres más";<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+                            }<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="un2ejercicio2" class="contenedor-desc">
+            <div class="div-ejercicios">
+                <h2>Validación de un formulario</h2>
+                <h3>Descripción:</h3>
+                <p>En este ejercicio de un formulario se comprueba si el campo del nombre es texto o no, si la edad esmayor de 18 años y si se ha seleccionado un campo "select" donde obligatoriamente se debe haber seleccionado un valor. Si hubo algún campo sin rellenar o con información errónea, el formulario muestra el campo que está incorrecto y solicita al usuario que lo cambie. Si todos los datos del formulario son correctos se envía el formulario y se muestra un mensaje de que se ha enviado.</p>
+                <iframe src="ejerciciosjs/form2/index.html"></iframe>
+                <div class="tabs2">
+                    <div class="boton-codigo">
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-2-html')">HTML</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-2-js')">JS</button>
+                    </div>
+                    <div class="cont-ej" id="ej-2-html">
+                        <p class="estilo-codigo">
+                            &lt;!DOCTYPE html&gt;<br>
+                            &lt;html lang=&quot;es&quot;&gt;<br>
+                            <br>
+                            &lt;head&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;meta charset=&quot;ttf-8&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;script src=&quot;script.js&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;/script&gt;<br>
+                            &lt;/head&gt;<br>
+                            <br>
+                            &lt;body&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;form name=&quot;fvalida&quot; action=&quot;&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nombre:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
+                            type=&quot;text&quot; name=&quot;nombre&quot; size=&quot;30&quot;
+                            maxlength=&quot;100&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edad:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
+                            type=&quot;text&quot; name=&quot;edad&quot; size=&quot;3&quot;
+                            maxlength=&quot;2&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Interés:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;select
+                            name=&quot;interes&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &lt;option value=&quot;Elegir&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Elegir<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option
+                            value=&quot;Comercial&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contacto
+                            comercial<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option
+                            value=&quot;Clientes&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atención
+                            al cliente<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option
+                            value=&quot;Proveedores&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contacto
+                            de proveedores<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td
+                            colspan=&quot;2&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
+                            type=&quot;button&quot; value=&quot;Enviar&quot; onclick=&quot;validacion()&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;/form&gt;<br>
+                            &lt;/body&gt;<br>
+                            &lt;/html&gt;<br>
+                        </p>
+                    </div>
+                    <div class="cont-ej" id="ej-2-js">
+                        <p class="estilo-codigo">
+                            function validarEntero(valor) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;valor = parseInt(valor)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;if (isNaN(valor)) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; return ""<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; return valor<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                            }<br>
+                            <br>
+                            function validacion() {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;if (document.fvalida.nombre.value.length == 0)
+                            &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; alert("Por favor escriba su nombre")<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; document.fvalida.nombre.focus()<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; return 0;<br>
+                            }<br>
+                            edad = document.fvalida.edad.value<br>
+                            edad = validarEntero(edad)<br>
+                            document.fvalida.edad.value = edad<br>
+                            if (edad == "") {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; alert("Tiene que introducir un número entero en su edad.")
+                            &nbsp;&nbsp;&nbsp;&nbsp; document.fvalida.edad.focus()
+                            &nbsp;&nbsp;&nbsp;&nbsp; return 0;<br>
+                            } else {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; if (edad &lt; 18) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; alert("Debe ser mayor de 18 años.")
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; document.fvalida.edad.focus()<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; return 0;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+                            }<br>
+                            if (document.fvalida.interes.selectedIndex == 0) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; alert("Debe seleccionar un motivo de su contacto.")
+                            &nbsp;&nbsp;&nbsp;&nbsp; document.fvalida.interes.focus()<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; return 0;<br>
+                            }<br>
+                            alert("Muchas gracias por enviar el formulario");<br>
+                            document.fvalida.submit();<br>
+                            }<br>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="un2ejercicio3" class="contenedor-desc">
+            <div class="div-ejercicios">
+                <h2>Cuenta regresiva</h2>
+                <h3>Descripción:</h3>
+                <p>En este ejercicio se le pide al usuario que escriba una fecha en un formato específico que se muestra gracias al atributo "placeholder" del elemento &lt;input&gt;, cuando hace click se calcula cuánto tiempo falta para esa fecha gracias a una función donde se utiliza "new Date()" para obtener la fecha actual y la proporcionada por el usuario y así hacer el cálculo de la cuenta regresiva. Se utiliza "setTimeout" para que esta información se actualice cada segundo y así se crea un temporizador. Si ingresa una fecha anterior a la actual se muestra que debe ingresar una fecha correcta en un mensaje.</p>
+                <iframe src="ejerciciosjs/form3/index.html"></iframe>
+                <div class="tabs2">
+                    <div class="boton-codigo">
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-3-html')">HTML</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-3-js')">JS</button>
+                    </div>
+                    <div class="cont-ej" id="ej-3-html">
+                        <p class="estilo-codigo">
+                            &lt;!DOCTYPE html&gt;<br>
+                            &lt;html&gt;<br>
+                            <br>
+                            &lt;head&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;meta charset=&quot;utf-8&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;script src=&quot;script.js&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;/script&gt;<br>
+                            &lt;/head&gt;<br>
+                            <br>
+                            &lt;body&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;h2&gt;Cuenta regresiva&lt;/h2&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;label for=&quot;fecha&quot;&gt;Introduce la fecha&lt;/label&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;input type=&quot;text&quot; id=&quot;inputFecha&quot;
+                            name=&quot;fecha&&nbsp;&nbsp;&nbsp;quot; placeholder=&quot;AAAA-MM-DD&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;button onclick=&quot;calcula()&quot;&gt;Calcular&lt;/button&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;div id=&#39;contador&#39;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                            &lt;/body&gt;<br>
+                            <br>
+                            &lt;/html&gt;<br>
+                        </p>
+                    </div>
+                    <div class="cont-ej" id="ej-3-js">
+                        <p class="estilo-codigo">
+                            function calcula() {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;let contadorFecha = document.getElementById(&quot;contador&quot;);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;let inputFecha = document.getElementById(&quot;inputFecha&quot;);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;let fecha = new Date(inputFecha.value + &#39;&nbsp;&nbsp;&nbsp;&nbsp;T00:00:00&#39;);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;let hoy = new Date()<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;let dias = 0<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;let horas = 0<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;let minutos = 0<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;let segundos = 0<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;if (fecha &gt; hoy) {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var diferencia = (fecha.getTime() - hoy.getTime()) / 1000
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dias = Math.floor(diferencia / 86400)<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;diferencia = diferencia - (86400 * dias)<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horas = Math.floor(diferencia / 3600)<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;diferencia = diferencia - (3600 * horas)<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;minutos = Math.floor(diferencia / 60)<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;diferencia = diferencia - (60 * minutos)<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;segundos = Math.floor(diferencia)<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contadorFecha.textContent = &#39;Quedan &#39; + dias + &#39; Dias, &#39; + horas + &#39; Horas, &#39; + minutos + &#39; Minutos, &#39; + segundos + &#39; Segundos para el &#39; + inputFecha.value; <br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (dias &gt; 0 || horas &gt; 0 || minutos &gt; 0 || segundos &gt; 0) {<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTimeout(&quot;calcula(\&quot;&quot; + contadorFecha + &quot;\&quot;)&quot;, 1000)
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;else {<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contadorFecha.textContent = &quot;Esta fecha ya ha pasado, por favor ingresa otra fecha&quot;<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                <br>
+                            }<br>
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </article>
+    <footer>
+
+    </footer>
+
+</body>
+
+</html>

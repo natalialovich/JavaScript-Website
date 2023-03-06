@@ -1,0 +1,170 @@
+/*Hoja de estilos. Ejercicio feedback presentado por Natalia Lovich Para la asignatura de programación de SEAS*/
+
+/*Estilos generales*/
+body {
+	/*esconde el scroll horizontal*/
+	overflow-x: hidden; 
+	background-color:  rgb(6, 41, 35);
+	background-image: linear-gradient( rgba(255, 255, 0, 0),rgba(179, 180, 102, 0.911), rgba(255, 255, 0, 0));
+}
+
+h1 {
+	font-family: 'Overlock', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+	font-weight: 900;
+	font-size: 28pt;
+	margin:0 auto;
+	color:rgb(255, 192, 185);
+	text-align: center;
+	text-shadow: 0px 1px rgb(255, 126, 66);
+}
+
+#arbol{
+	position: absolute;
+	top:-25px;
+	left: 105px;
+	width: 470px;
+}
+
+#arbustos {
+	background-image: url("arbustos.png");
+	background-size: 800px;
+	width:3072px;
+	height:500px;
+	position:fixed;
+	bottom:0px;	
+	right:0px;
+}
+
+/*Panel de control*/
+#controles {
+	margin:10px;
+	border-radius:20px;
+	position: absolute;
+	right: 10%;
+	top: 75%;
+	min-width: 170px;
+	background-color:rgba(11, 4, 6, 0.65);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	z-index:50 ;
+}
+
+.boton {
+	font-family: sans-serif;
+	font-size:13pt;
+	font-weight:600;
+	background-color: salmon;
+	width: fit-content;
+	height: 45px;
+	padding: 5px 15px;
+    margin:10px;
+    color:aliceblue;
+    border: 1px solid rgb(191, 197, 226);
+    border-radius: 4px;
+    display: block;
+    box-shadow: 2px 2px #999;
+    cursor:pointer;
+}
+
+button:disabled,
+button[disabled]{
+	pointer-events: none;
+	border: 1px solid rgb(110, 185, 250);
+	background-color: rgb(255, 223, 219);
+	color:  rgb(127, 158, 185);
+}
+
+.boton:hover{
+    background-color:rgb(130, 136, 167); 
+}
+
+.boton:active{
+    transform: translate(1px, 1px); 
+    box-shadow: 0px 0px #666;
+}
+
+#lista {
+	color:aliceblue;
+	border: 1px solid rgb(191, 197, 226);
+    border-radius: 4px;
+	font-family: sans-serif;
+	font-size:13pt;
+	font-weight:700;
+	background-color: salmon;
+	height: 45px;
+	padding: 5px 0px 5px 5px;
+    margin:10px;
+}
+
+#lista:focus > option:checked { 
+    background: #000;
+}
+
+label {
+	height: 50px;
+	padding: 5px;
+    margin:10px 5px 10px 18px;
+	font-family:sans-serif;
+	font-size:13pt;
+	font-weight:600;
+	color:aliceblue;
+	text-align:center;
+	line-height:48px;
+}
+
+/*Visor para el fondo*/
+#visor{
+	margin: 0 auto;
+	max-width: 100%;
+	height:600px; 
+	background-color: salmon;
+	overflow: hidden;
+}
+
+/*Fondo animado*/
+#paisaje{
+	height:605px;
+	width:3072px;
+	background-image: url("paisaje.jpg");
+	background-repeat: repeat-x;
+	animation-name:paisaje; 
+	animation-duration: 25s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-play-state: running;
+}
+
+@keyframes paisaje{
+	from {transform: translate(-1024px);}
+	to {transform: translate(0);}
+}
+  
+/*Ardilla estática en el árbol*/
+#ardilla2{
+	position: absolute;
+	top: 127px;
+	left: 145px;
+	width: 140px;
+	transform: rotate(10deg);
+	visibility: hidden;
+}
+
+/*Ardilla voladora animada*/
+#ardilla{
+	position: absolute;
+	top: 10px;
+	right: -200px;
+	width: 230px;
+	animation-name: ardilla;
+	animation-duration: 8s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes ardilla{
+	0% {right: -200px; top: 10px }
+	35%{transform: rotate(23deg);}
+	60%{transform: rotate(-15deg);}
+	100%{right: 2000px; top:145px }
+}

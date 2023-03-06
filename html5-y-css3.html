@@ -1,0 +1,398 @@
+<!DOCTYPE HTML>
+<!--Trabajo final. Presentado por Natalia Lovich para la asignatura de programación web de SEAS-->
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicios de JavaScript</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <!--enlace a la hoja de estilos-->
+    <link rel="stylesheet" href="styles.css">
+    <!--enlace a los scripts-->
+    <script src="mis-scripts.js"></script>
+    <!--Fuente para el encabezado de la página-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1>JavaScript</h1>
+        <h3 id = "subtitulo">Para programación web</h3>
+        <nav>
+            <ul>
+                <li class="nav-item uno"><a href="index.html">JavaScript</a></li>
+                <li class="nav-item dos"><a href="dom-y-eventos.html">DOM y Eventos</a></li>
+                <li class="nav-item tres"><a href="avanzado-en-js.html">Avanzado en JS</a></li>
+                <li class="nav-item cuatro"><a href="ajax-y-jquery.html">AJAX y jQuery</a></li>
+                <li class="nav-item cinco"><a href="html5-y-css3.html">HTML5 y CSS3</a></li>
+            </ul>
+        </nav>
+    </header>
+    <article class="contenedor">
+        <div class="contenedor-tabs">
+            <button id="default-tab" class="tab" onclick="cambiarTema(event, 'HTML5')">HTML5</button>
+            <button class="tab" onclick="cambiarTema(event, 'CSS3')">CSS3</button>
+            <div class="dropdown">
+                <button class="tab" id="tab-ejercicios" onclick="cambiarTema(event, 'un5ejercicio')">Ejercicios</button>
+                <a class="tab-secundaria" id="tab-ej-1" onclick="cambiarTema(event, 'un5ejercicio')">Ardilla
+                    voladora</a>
+            </div>
+        </div>
+        <div id="HTML5" class="contenedor-desc">
+            <h2 class="desc-titulo">HTML 5</h2>
+            <p class="descripcion">
+                HTML 5 (HyperText Markup Language, versión 5) es la quinta revisión importante del lenguaje básico de la
+                World Wide Web, HTML. HTML5 específica dos variantes de sintaxis para HTML: una «clásica», HTML
+                (text/html), conocida como HTML5, y una variante XHTML conocida como sintaxis XHTML 5 que deberá
+                servirse con sintaxis XML (application/xhtml+xml).Esta es la primera vez que HTML y XHTML se han
+                desarrollado en paralelo. La versión definitiva de la quinta revisión del estándar se publicó en octubre
+                de 2014.(fuente: wikipedia)
+            </p>
+            <div class="descripcion">
+                <figure>
+                    <img src="./Images/imag-tags.jpg" alt="tags html5">
+                    <figcaption>Nuevos elementos en HTML5</figcaption>
+                </figure>
+            </div>
+        </div>
+        <div id="CSS3" class="contenedor-desc">
+            <h2 class="desc-titulo">CSS3</h2>
+            <p class="descripcion">
+                A diferencia de CSS2, que fue una única especificación que definía varias funcionalidades, CSS3 está
+                dividida en varios documentos separados, llamados "módulos".<br><br>
+
+                Cada módulo añade nuevas funcionalidades a las definidas en CSS2, de manera que se preservan las
+                anteriores para mantener la compatibilidad.<br><br>
+
+                Los trabajos en el CSS3, comenzaron a la vez que se publicó la recomendación oficial de CSS2, y los
+                primeros borradores de CSS3 fueron liberados en junio de 1999.<br><br>
+
+                Debido a la modularización del CSS3, diferentes módulos pueden encontrarse en diferentes estados de su
+                desarrollo, de forma que a fechas de noviembre de 2011, hay alrededor de cincuenta módulos publicados,
+                tres de ellos se convirtieron en recomendaciones oficiales de la W3C en 2011: "Selectores", "Espacios de
+                nombres" y "Color".<br><br>
+
+                Algunos módulos, como "Fondos y colores", "Consultas de medios" o "Diseños multicolumna" están en fase
+                de "candidatos", y considerados como razonablemente estables, a finales de 2011, y sus implementaciones
+                en los diferentes navegadores son señaladas con los prefijos del motor del mismo.(fuente: wikipedia)
+            </p>
+        </div>
+
+        <div id="un5ejercicio" class="contenedor-desc">
+            <div class="div-ejercicios">
+                <h2>Ardilla voladora</h2>
+                <h3>Descripción:</h3>
+                <p>Aquí se genera una contraseña aleatoria al presional el botón naranja, esto se logra gracias al
+                    método Math.random(), que se utiliza en la función, con un loop de iteración que va asignando un
+                    carácter de la constante “characters”.</p>
+                <iframe src="ejerciciosjs/feedback/ej-feedback1.html"></iframe>
+                <div class="tabs2">
+                    <div class="boton-codigo">
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-1-html')">HTML</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-1-css')">CSS</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-1-js')">JS</button>
+                    </div>
+                    <div class="cont-ej" id="ej-1-html">
+                        <p class="estilo-codigo">
+                            &lt;!DOCTYPE HTML&gt;<br>
+                            &lt;!--Ejercicio Feedback Presentado por Natalia Lovich para la asignatura de programación web de SEAS--&gt;<br>
+                            &lt;html lang = &quot;es&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;head&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset = &quot;utf-8&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Ardilla Voladora&lt;/title&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Define como será visualizado especialmente e impide hacer zoom en el movil--&gt;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no&quot;&gt;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--enlace a la hoja de estilos--&gt;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel = &quot;stylesheet&quot; href = &quot;ej-feedback.css&quot;&gt;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--Fuente para el encabezado de la página--&gt;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;link href=&quot;https://fonts.googleapis.com/css2?family=<br>Overlock:ital,wght@0,400;0,700;0,900;1,<br>400;1,700;1,900&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;	<br>
+                                &lt;/head&gt;<br>
+                                &lt;body&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&lt;article&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Ardilla Voladora&lt;/h1&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id=&quot;visor&quot;&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id=&quot;paisaje&quot;&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                                        &lt;img id=&quot;ardilla&quot; src=&quot;ardilla.png&quot; alt=&quot;ardilla voladora&quot;&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img id=&quot;arbol&quot; src=&quot;arbol2.png&quot; alt=&quot;arbol&quot;&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img id=&quot;ardilla2&quot; src=&quot;ardilla2.png&quot; alt=&quot;ardilla voladora2&quot;&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id=&quot;controles&quot;&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button id=&quot;btn-volar&quot; class=&quot;boton&quot; onclick= &quot;volar()&quot;&gt;Volar&lt;/button&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button id=&quot;btn-parar&quot; class=&quot;boton&quot; onclick= &quot;parar()&quot;&gt;Aterrizar&lt;/button&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label for=&quot;lista&quot;&gt; Velocidad: &lt;/label&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;select id=&quot;lista&quot; name=&quot;velocidad&quot; class=&quot;sombra&quot;&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=&quot;1&quot;&gt;Muy lento&lt;/option&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=&quot;2&quot;&gt;Lento&lt;/option&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=&quot;3&quot; selected&gt;Normal&lt;/option&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=&quot;4&quot;&gt;Rápido&lt;/option&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=&quot;5&quot;&gt;Muy Rápido&lt;/option&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id=&quot;arbustos&quot;&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&lt;/article&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&lt;!--Enlace al archivo JS--&gt;<br>
+                                        &nbsp;&nbsp;&nbsp;&lt;script src=&quot;ej-feedback.js&quot;&gt;&lt;/script&gt;<br>
+                                &lt;/body&gt;<br>
+                            &lt;/html&gt;<br>
+                        </p>
+                    </div>
+                    <div class="cont-ej" id="ej-1-css">
+                        <p class="estilo-codigo">
+                            body {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;/*esconde el scroll horizontal*/<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;overflow-x: hidden; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-color: rgb(6, 41, 35);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-image: linear-gradient( rgba(255, 255, 0, 0),rgba(179,
+                            180, 102, 0.911), rgba(255, 255, 0, 0));<br>
+                            }<br>
+                            <br>
+                            h1 {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-family: 'Overlock', Tahoma, Geneva, Verdana, sans-serif,
+                            sans-serif;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-weight: 900;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-size: 28pt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;margin:0 auto;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;color:rgb(255, 192, 185);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;text-align: center;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;text-shadow: 0px 1px rgb(255, 126, 66);<br>
+                            }<br>
+                            <br>
+                            #arbol{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;top:-25px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;left: 105px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;width: 470px;<br>
+                            }<br>
+                            <br>
+                            #arbustos {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-image: url("arbustos.png");<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-size: 800px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;width:3072px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;height:500px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;position:fixed;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;bottom:0px; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;right:0px;<br>
+                            }<br>
+                            <br>
+                            /*Panel de control*/<br>
+                            #controles {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;margin:10px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;border-radius:20px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;right: 10%;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;top: 75%;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;min-width: 170px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-color:rgba(11, 4, 6, 0.65);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;flex-wrap: wrap;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;z-index:50 ;<br>
+                            }<br>
+                            <br>
+                            .boton {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-family: sans-serif;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-size:13pt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-weight:600;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-color: salmon;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;width: fit-content;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;height: 45px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;padding: 5px 15px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;margin:10px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;color:aliceblue;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;border: 1px solid rgb(191, 197, 226);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;border-radius: 4px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;display: block;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 2px 2px #999;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;cursor:pointer;<br>
+                            }<br>
+                            <br>
+                            button:disabled,<br>
+                            button[disabled]{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;pointer-events: none;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;border: 1px solid rgb(110, 185, 250);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-color: rgb(255, 223, 219);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;color: rgb(127, 158, 185);<br>
+                            }<br>
+                            <br>
+                            .boton:hover{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-color:rgb(130, 136, 167); <br>
+                            }<br>
+                            <br>
+                            .boton:active{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;transform: translate(1px, 1px); <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 0px 0px #666;<br>
+                            }<br>
+                            <br>
+                            #lista {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;color:aliceblue;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;border: 1px solid rgb(191, 197, 226);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;border-radius: 4px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-family: sans-serif;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-size:13pt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-weight:700;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-color: salmon;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;height: 45px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;padding: 5px 0px 5px 5px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;margin:10px;<br>
+                            }<br>
+                            <br>
+                            #lista:focus > option:checked { <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background: #000;<br>
+                            }<br>
+                            <br>
+                            label {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;height: 50px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;padding: 5px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;margin:10px 5px 10px 18px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-family:sans-serif;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-size:13pt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-weight:600;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;color:aliceblue;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;text-align:center;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;line-height:48px;<br>
+                            }<br>
+                            <br>
+                            /*Visor para el fondo*/<br>
+                            #visor{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;margin: 0 auto;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;max-width: 100%;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;height:600px; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-color: salmon;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;overflow: hidden;<br>
+                            }<br>
+                            <br>
+                            /*Fondo animado*/<br>
+                            #paisaje{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;height:605px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;width:3072px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-image: url("paisaje.jpg");<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-repeat: repeat-x;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;animation-name:paisaje; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;animation-duration: 25s;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;animation-iteration-count: infinite;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;animation-timing-function: linear;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;animation-play-state: running;<br>
+                            }<br>
+                            <br>
+                            @keyframes paisaje{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;from {transform: translate(-1024px);}<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;to {transform: translate(0);}<br>
+                            }<br>
+                            <br>
+                            /*Ardilla estática en el árbol*/<br>
+                            #ardilla2{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;top: 127px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;left: 145px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;width: 140px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;transform: rotate(10deg);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;visibility: hidden;<br>
+                            }<br>
+                            <br>
+                            /*Ardilla voladora animada*/<br>
+                            #ardilla{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;top: 10px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;right: -200px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;width: 230px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;animation-name: ardilla;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;animation-duration: 8s;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;animation-iteration-count: infinite;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;animation-timing-function: linear;<br>
+                            }<br>
+                            <br>
+                            @keyframes ardilla{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;0% {right: -200px; top: 10px }<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;35%{transform: rotate(23deg);}<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;60%{transform: rotate(-15deg);}<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;100%{right: 2000px; top:145px }<br>
+                            }<br>
+                            }<br>
+                        </p>
+                    </div>
+                    <div class="cont-ej" id="ej-1-js">
+                        <p class="estilo-codigo">
+                            const paisaje = document.getElementById("paisaje");<br>
+                            const ardilla = document.getElementById("ardilla");<br>
+                            const ardilla2 = document.getElementById("ardilla2");<br>
+                            const listaVel = document.getElementById("lista");<br>
+                            const btnVolar = document.getElementById("btn-volar");<br>
+                            const btnParar = document.getElementById("btn-parar")<br>
+                            <br>
+                            //Función para que la ardilla aterrice <br>
+                            function parar() {<br>
+                            //se inicia un intervalo <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;miIntervalo = setInterval(aterrizar, 300);<br>
+                            //deshabilitar los botones de volar y parar hasta que haya aterrizado <br>
+                            //y cambia el texto del botón aterrizar<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;btnVolar.disabled = true;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;btnParar.disabled = true;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;btnParar.textContent = "Aterrizando!"<br>
+                            // función a realizar durante el intervalo<br>
+                            function aterrizar(){<br>
+                            //guarda en una variable los datos de posición del elemento ardilla <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;let posicion = ardilla.getBoundingClientRect()<br>
+                            //cuando la ardilla llega a la posición especificada, se muestra la ardilla2<br>
+                            //se esconde la primera ardilla, se pausa el paisaje, se termina el <br>
+                            //intervalo y se habilita el botón de volar<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;if (posicion.right < 400 && posicion.right> 300){<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;paisaje.style.animationPlayState = "paused";<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ardilla.style.animationPlayState = "paused";<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ardilla.style.visibility = "hidden";<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ardilla2.style.visibility = "visible";<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clearInterval(miIntervalo);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btnVolar.disabled = false;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btnParar.textContent = "Listo!"<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                }<br>
+                                <br>
+                                //Función para que la ardilla vuele<br>
+                                function volar() {<br>
+                                //se habilita el botón de aterrizar, se esconde ardilla2 y se ponen en marcha las
+                                animaciones<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;btnParar.disabled = false;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;paisaje.style.animationPlayState = "running";<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;ardilla.style.animationPlayState = "running";<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;ardilla.style.visibility = "visible";<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;ardilla2.style.visibility = "hidden";<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;btnParar.textContent = "Aterrizar"<br>
+                                }<br>
+                                <br>
+                                //Controles de velocidad <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;listaVel.addEventListener("change",function(){<br>
+                                //Variable que guarda el valor del "option" cuando cambia<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;const velocidad = listaVel.options[listaVel.selectedIndex].value;<br>
+                                //se modifica la duración de la animación, haciendola mas rápida dependiendo del
+                                valor<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;if (velocidad == 1){<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;paisaje.style.animationDuration = "75s"<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;} else if (velocidad ==2){<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;paisaje.style.animationDuration = "38s"<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;} else if (velocidad ==3){<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;paisaje.style.animationDuration = "25s"<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;} else if (velocidad ==4){<br>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;paisaje.style.animationDuration = "10s"<br>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;paisaje.style.animationDuration = "4s"<br>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                } )<br>
+                                <br>
+
+                        </p>
+                    </div>
+    </article>
+    <footer>
+
+    </footer>
+
+</body>
+
+</html>

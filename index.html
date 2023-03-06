@@ -1,0 +1,1014 @@
+<!DOCTYPE HTML>
+<!--Trabajo final. Presentado por Natalia Lovich para la asignatura de programación web de SEAS-->
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicios de JavaScript</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <!--enlace a la hoja de estilos-->
+    <link rel="stylesheet" href="styles.css">
+    <!--enlace a los scripts-->
+    <script src="mis-scripts.js"></script>
+    <!--Fuente para el encabezado de la página-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1>JavaScript</h1>
+        <h3 id = "subtitulo">Para programación web</h3>
+        <nav>
+            <ul>
+                <li class="nav-item uno"><a href="index.html">JavaScript</a></li>
+                <li class="nav-item dos"><a href="dom-y-eventos.html">DOM y Eventos</a></li>
+                <li class="nav-item tres"><a href="avanzado-en-js.html">Avanzado en JS</a></li>
+                <li class="nav-item cuatro"><a href="ajax-y-jquery.html">AJAX y jQuery</a></li>
+                <li class="nav-item cinco"><a href="html5-y-css3.html">HTML5 y CSS3</a></li>
+            </ul>
+        </nav>
+    </header>
+    <article class="contenedor">
+        <div class="contenedor-tabs">
+            <button id="default-tab" class="tab" onclick="cambiarTema(event, 'queEsJS')">Qué es JS</button>
+            <button class="tab" onclick="cambiarTema(event, 'sintaxYSem')">Sintaxis y semántica</button>
+            <button class="tab" onclick="cambiarTema(event, 'operadores')">Operadores</button>
+            <button class="tab" onclick="cambiarTema(event, 'estrDContr')">Estructuras de control de flujo</button>
+            <button class="tab" onclick="cambiarTema(event, 'funobjarr')">Funciones, objetos y Arrays</button>
+
+            <div class="dropdown">
+                <button class="tab" id="tab-ejercicios"
+                    onclick="cambiarTema(event, 'un1ejercicios')">Ejercicios</button>
+                <a class="tab-secundaria" id="tab-ej-1" onclick="cambiarTema(event, 'un1ejercicio1')">Alerta de un
+                    array</a>
+                <a class="tab-secundaria" id="tab-ej-2" onclick="cambiarTema(event, 'un1ejercicio2')">Contador</a>
+                <a class="tab-secundaria" id="tab-ej-3" onclick="cambiarTema(event, 'un1ejercicio3')">Marcador de
+                    Basket</a>
+            </div>
+
+
+        </div>
+        <div id="queEsJS" class="contenedor-desc">
+            <h2 class="desc-titulo">Qué es JavaScript</h2>
+            <p class="descripcion">
+                JavaScript o JS es un lenguaje de programación interpretado, es decir, es un lenguaje en el que el
+                código fuente se ejecuta directamente, instrucción a instrucción, el código no pasa por un proceso de
+                compilación, sino que tenemos un programa llamado intérprete que lee la instrucción en tiempo real, y la
+                ejecuta.<br> <br>
+                JS es más conocido como un lenguaje para páginas web pero como es mencionado en <strong>MDN Web
+                    Docs</strong>, es usado
+                también en muchos entornos fuera del navegador, tal como Node.js, Apache CouchDB y Adobe Acrobat.
+                JavaScript es un lenguaje de programación basada en prototipos, en palabras simples: permite la creación
+                de un objeto sin definir primero su clase. También es multiparadigma, de un solo hilo, dinámico, con
+                soporte para programación orientada a objetos, imperativa y declarativa (por ejemplo programación
+                funcional).<br> <br>
+                No se debe confundir JavaScript con el lenguaje de programación Java. Ambos "Java" y "JavaScript" son
+                marcas de Oracle en los Estados Unidos y otros países, Sin embargo, los dos lenguajes de programación
+                tienen sintaxis, semántica y usos muy diferentes.
+            </p>
+            <h2 class="desc-titulo">Historia y Versiones</h2>
+            <p class="descripcion">
+                JavaScript fue inventado por Brendan Eich in 1995, para mejorar la experiencia de navegación y velocidad
+                de las páginas web dentro del navegador Netscape. Se convirtió en standard ECMA en1997. El nombre
+                oficial de este programa es ECMAScript y ha tenido diferentes versiones durante los años, los nombres de
+                estas versiones se han abreviado de la siguiente forma ES1, ES2, ES3, ES5, y ES6. <br><br>
+                Desde 2016 las nuevas versiones llevan el nombre del año (ECMAScript 2016 / 2017 / 2018). <br><br>
+                ECMAScript 2009 o ES5, fue la primera revisión relevante de JavaScript. Entre las adiciones más
+                significativas están el modo “strict mode”, soporte para el formato JSON con <em>JSON.parse()</em> y
+                <em>JSON.stringify(), String.trim()</em> que quita el espacio en blanco a ambos lados de una
+                cadena,<em>Array.isArray()</em> devuelve si un objeto es un Array, y métodos de iteración de Array como
+                <em>forEach()</em>.<br><br>
+                ECMAScript 2015, ES6 o ECMAScript 6 fue la segunda revisión más importante de JavaScript. En esta
+                versión se introdujeron las variables <em>let</em> y <em>const</em>, las Funciones Flecha,
+                <em>Array.find()</em>, y <em>Array.findIndex()</em>.<br><br>
+                Microsoft finalizó todo el soporte para Internet Explorer en junio 15 de 2022 siendo este el final de
+                este navegador. Internet Explorer no admite ES6 ni las últimas adiciones de JavaScript. El resto de
+                navegadores si las soporta.
+
+            </p>
+        </div>
+        <div id="sintaxYSem" class="contenedor-desc">
+            <h2 class="desc-titulo">Sintaxis y Semántica</h2>
+            <ul class="descripcion">
+                <li class="lista-desc">Distingue entre mayúsculas y minúsculas y utiliza el conjunto de caracteres
+                    Unicode.</li>
+                <li class="lista-desc">No es necesario un punto y coma después de una declaración si está escrita en su
+                    propia línea. Pero si hay más de una declaración en una línea, entonces se deben separar con punto y
+                    coma. Aunque es considerado buena práctica hacerlo en todos los casos.</li>
+                <li class="lista-desc">Los espacios, tabulaciones y caracteres de nueva línea son considerados como
+                    espacios en blanco por el intérprete e JS.</li>
+                <li class="lista-desc">Comentarios: Según MDN los comentarios se comportan como espacios en blanco y se
+                    descartan durante la ejecución del script. Para realizar un comentario en una línea utilizamos <span
+                        class="estilo-codigo">//comentario</span> y para un comentario de varias líneas <span
+                        class="estilo-codigo">/*comenrario*/</span> como lo hacemos en CSS.</li>
+            </ul>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">
+                    / un comentario de una línea <br> <br>
+
+                    /* este es un comentario <br>
+                    * más largo, de varias líneas <br>
+                    */ <br> <br>
+
+                    /* Sin embargo, no se pueden /* anidar comentarios */ se produce un SyntaxError */
+                </p>
+            </div>
+            <h3 class="desc-titulo">Variables (var) (let) (const)</h3>
+            <p class="descripcion">
+                No es necesario definir el tipo de las variables: Una misma variable puede almacenar diferentes tipos de
+                datos.
+                JavaScript tiene tres tipos de declaraciones de variables. Deben comenzar con una letra, un guion bajo o
+                un signo de dólar. Los siguientes caracteres también pueden contener dígitos pero no el primer carácter.
+                Por ejemplo <span class="estilo-codigo">Numero5</span>, <span class="estilo-codigo">_temp99</span>,
+                <span class="estilo-codigo">$credit</span> y <span class="estilo-codigo">first-name</span>.
+            </p>
+            <h4 class="desc-titulo">Tipos</h4>
+            <ul>
+                <li class="lista-desc"><strong>Var:</strong> Declara una variable con ámbito local o global,
+                    opcionalmente la inicia a un valor. Ahora su uso está recomendado sólo para casos muy específicos.
+                </li>
+                <li class="lista-desc"><strong>Let:</strong> Declara una variable local con ámbito de bloque,
+                    opcionalmente la inicia a un valor.</li>
+                <li class="lista-desc"><strong>Const:</strong> Es más bien una constante. Declara un nombre de constante
+                    local de solo lectura, no se puede modificar su valor y tiene ámbito de bloque.</li>
+            </ul>
+            <h3 class="desc-titulo">Ejemplos</h3>
+            <div class="descripcion">
+                <p class="estilo-codigo">
+                    //Declarar una variable:<br><br>
+
+                    let ejemplo <br>
+                    var ejemplo2<br>
+                    const ejemplo3<br><br>
+
+                    //Inicializar una variable:<br><br>
+
+                    let ejemplo = 5<br>
+                    var ejemplo2 = 5<br>
+                    const ejemplo3 = 5<br>
+                </p>
+            </div>
+            <h3 class="desc-titulo">Tipos de datos que se almacenan en una variable y la forma de expresarlos:</h3>
+
+            <h4 class="desc-titulo">Tipos primitivos:</h4>
+            <ol>
+                <li class="lista-desc"><strong>Booleano:</strong> true y false.</li>
+                <li class="lista-desc"><strong>Null:</strong> Una palabra clave especial que denota un valor nulo o
+                    variable vacía.</li>
+                <li class="lista-desc"><strong>Undefined:</strong> Una propiedad cuyo valor no está definido.</li>
+                <li class="lista-desc"><strong>Number</strong> Un número entero o un número con coma flotante o decimal.
+                    Por ejemplo: 15 o 3.14159. No existe una diferencia entre un número entero y otro decimal, por lo
+                    que 1 y 1.0 son el mismo valor.</li>
+                <li class="lista-desc"><strong>String:</strong> O cadena de texto, es una secuencia de caracteres que
+                    representan un valor de texto. Cada carácter de la cadena se encuentra en una posición a la que se
+                    puede acceder individualmente, siendo el primer carácter el de la posición 0.Por ejemplo: "Hola".
+                </li>
+            </ol>
+
+
+        </div>
+        <div id="operadores" class="contenedor-desc">
+            <h2 class="desc-titulo">Operadores</h2>
+
+            <h3 class="desc-titulo">Asignación (=)</h3>
+            <p class="descripcion">Este operador es el más utilizado y el más sencillo. Se utiliza para guardar un valor
+                específico en una variable. El símbolo utilizado es <span class="estilo-codigo">=</span>.
+                A la izquierda del operador, debe indicarse siempre el nombre de la variable y al lado derecho del
+                operador, se pueden indicar variables, valores, condiciones lógicas, etc:
+            </p>
+            <h4 class="desc-titulo">Ejemplo</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">var numero1 = 3;<br>
+                </p>
+            </div>
+
+            <h3 class="desc-titulo">Operadores lógicos (&&) (||) (!)</h3>
+            <p class="descripcion"> AND es una operación lógica que obtiene su resultado combinando dos valores
+                booleanos. El operador se indica mediante el símbolo <span class="estilo-codigo">&&</span> y su
+                resultado solamente es true si los dos
+                operandos son true:</p>
+            <div class="descripcion">
+                <table class="descripcion">
+                    <tr>
+                        <th>variable1</th>
+                        <th>variable2</th>
+                        <th>variable1 && variable2</th>
+                    </tr>
+                    <tr>
+                        <td>true</td>
+                        <td>true</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>true</td>
+                        <td>false</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>false</td>
+                        <td>true</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>false</td>
+                        <td>false</td>
+                        <td>false</td>
+                    </tr>
+                </table>
+            </div>
+            <p class="descripcion">OR también combina dos valores booleanos, se indica mediante el símbolo <span
+                    class="estilo-codigo">||</span> y su
+                resultado es true si alguno de los dos operandos es true:</p>
+            <div class="descripcion">
+                <table>
+                    <tr>
+                        <th>variable1</th>
+                        <th>variable2</th>
+                        <th>variable1 || variable2</th>
+                    </tr>
+                    <tr>
+                        <td>true</td>
+                        <td>true</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>true</td>
+                        <td>false</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>false</td>
+                        <td>true</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>false</td>
+                        <td>false</td>
+                        <td>false</td>
+                    </tr>
+                </table>
+            </div>
+            <p class="descripcion"> Uno de los operadores lógicos más utilizados es el de la negación NOT. Se utiliza
+                para obtener el valor contrario al valor de la variable, se indica al añadir el símbolo <span
+                    class="estilo-codigo">!</span> al inicio del identificador de la variable.</p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">var visible = true;<br>
+                    console.log(!visible); // Muestra "false" y no "true"</p>
+            </div>
+            <div class="descripcion">
+                <table class="descripcion">
+                    <tr>
+                        <th>variable1</th>
+                        <th>!variable</th>
+                    </tr>
+                    <tr>
+                        <td>true</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>false</td>
+                        <td>true</td>
+                    </tr>
+                </table>
+            </div>
+            <h3 class="desc-titulo">Operadores de Comparación o relacionales (&lt;) (&gt;) (&gt;=) (&lt;=) (!=) (==)
+            </h3>
+            <p class="descripcion">Los operadores relacionales definidos por JavaScript son idénticos a los de
+                matemáticas: mayor que <span class="estilo-codigo">&gt;</span>, menor que <span
+                    class="estilo-codigo">&lt;</span>, mayor o igual <span class="estilo-codigo">&gt;=</span>, menor o
+                igual <span class="estilo-codigo">&lt;=</span>, distinto de <span class="estilo-codigo">!=</span> y el
+                de igual que <span class="estilo-codigo">==</span> que se utiliza para comparar el valor de dos
+                variables (se debe diferenciar del operador de asignación <span class="estilo-codigo">=</span>)<br><br>
+                El resultado de todos estos operadores siempre es un valor booleano:</p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">var numero1 = 3;<br>
+                    var numero2 = 5;<br>
+                    numero1 &gt; numero2; // devuelve false<br>
+                    numero1 &lt; numero2; // devuelve true<br><br>
+                    numero1 = 5;<br>
+                    numero2 = 5;<br>
+                    numero1 &gt;= numero2; // devuelve true<br>
+                    numero1 &lt;= numero2; // devuelve true<br>
+                    numero1 == numero2; // devuelve true<br>
+                    numero1 != numero2; // devuelve false
+                </p>
+            </div>
+            <h3 class="desc-titulo">Operadores aritméticos (+) (-) (*) (/) (%)</h3>
+            <p class="descripcion">JavaScript permite realizar manipulaciones matemáticas con el valor de las variables
+                numéricas. Los operadores definidos son: suma +, resta -, multiplicación *, división / y módulo %.
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">
+                    var numero1 = 10;<br>
+                    var numero2 = 5;<br><br>
+
+                    numero1 / numero2; // = 2<br>
+                    3 + numero1; // = 13<br>
+                    numero2 - 4; // = 1<br>
+                    numero1 * numero 2; // = 50<br>
+                    numero1 % numero2; // = 0<br>
+                </p>
+            </div>
+            <h3 class="desc-titulo">Los operadores de incremento y decremento (++) (--)</h3>
+            <p class="descripcion">El operador de incremento y decremento se indica mediante el símbolo ++ o -- en el
+                nombre de la variable. Cuando los usamos como prefijo, su valor cambia antes de realizar cualquier otra
+                operación. Si los utilizamos como sufijo, su valor cambia después de ejecutar la sentencia en la que
+                aparece.
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">
+                    var numero = 5;<br>
+                    ++numero;<br>
+                    //lo que equivaldría a <br>
+                    var numero = 5;<br>
+                    numero = numero + 1;<br>
+                    <br>
+                    var numero = 5;<br>
+                    --numero;<br>
+                    //El anterior ejemplo es equivalente a:<br>
+                    var numero = 5;<br>
+                    numero = numero - 1;<br>
+                    <br><br>
+                    var numero1 = 5;<br>
+                    var numero2 = 2;<br>
+                    numero3 = numero1++ + numero2;<br>
+                    // resultado: numero3 = 7 y numero1 = 6<br><br>
+
+                    var numero1 = 5;<br>
+                    var numero2 = 2;<br>
+                    numero3 = ++numero1 + numero2;<br>
+                    // resultado: numero3 = 8, se hace la adición antes de la operación (numero1 = 6)<br>
+                </p>
+            </div>
+            <h3 class="desc-titulo">El operador de asignación abreviada (+=)</h3>
+            <p class="descripcion">Los operadores matemáticos también se pueden combinar con el operador de asignación
+                para abreviar su notación:
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">
+                    var numero1 = 5;<br>
+                    numero1 += 3; // numero1 = numero1 + 3 = 8<br>
+                    numero1 -= 1; // numero1 = numero1 - 1 = 4<br>
+                    numero1 *= 2; // numero1 = numero1 * 2 = 10<br>
+                    numero1 /= 5; // numero1 = numero1 / 5 = 1<br>
+                    numero1 %= 4; // numero1 = numero1 % 4 = 1<br>
+                </p>
+            </div>
+            <h3 class="desc-titulo">Operador de concatenación (+)</h3>
+            <p class="descripcion">La concatenación es cuando unimos dos o más cadenas, dando lugar a una nueva cadena.
+                Para esto usamos el operador + de concatenación. Es también el símbolo que usamos para sumar números,
+                aunque aplicado a las cadenas las unirá, se deben incluir los espacios para al final la frase no tenga
+                palabras unidas.
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">
+                    const resultado = "esta noche " + "cenamos pizza"; <br>
+                    resultado = “esta noche cenamos pizza”.<br>
+                </p>
+            </div>
+            <h3 class="desc-titulo">Operador condicional (?)</h3>
+            <p class="descripcion">Es el único operador de JavaScript que toma tres operandos. El operador puede tener
+                uno de dos valores según una condición. La sintaxis es:<br>
+                condición ? val1 : val2<br>
+                Si la condición es true, el operador tiene el valor de val1. De lo contrario, tiene el valor de val2.
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">
+                    var status = (age >= 18) ? 'adult' : 'minor';
+                </p>
+            </div>
+            <p class="descripcion">Esta declaración asigna el valor "adult" a la variable status si age es de dieciocho
+                años o más. De lo contrario, asigna el valor "minor" a status.
+            </p>
+            <h3 class="desc-titulo">El operador coma (,)</h3>
+            <p class="descripcion">Evalúa dos operandos y devuelve el valor del último operando. Este operador se
+                utiliza principalmente dentro de un bucle for, para permitir que se actualicen múltiples variables cada
+                vez a través del bucle.
+            </p>
+
+        </div>
+        <div id="estrDContr" class="contenedor-desc">
+            <h2 class="desc-titulo">Estructuras de Control de Flujo</h2>
+            <h3 class="desc-titulo">Estructura If, If…Else</h3>
+            <p class="descripcion">Esta estructura es usada para tomar decisiones en función de una condición.
+            </p>
+            <div class="descripcion">
+                <p class="estilo-codigo">
+                    if(condición) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                    }
+
+                </p>
+            </div>
+            <p class="descripcion">
+                Si la condición se cumple, es decir, si su valor es true, se ejecutan las instrucciones que se
+                encuentran dentro del bloque {...}. Si la condición no se cumple, o lo que es lo mismo, si su valor es
+                false, no se ejecutan estas instrucciones del bloque y el programa continúa ejecutando el resto de
+                instrucciones.
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">var mensaje = true;<br><br>
+                    if(mensaje) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log("Hola Mundo");<br>
+                    }<br><br>
+                    //también se puede expresar de la siguiente forma<br><br>
+                    if(mensaje == true) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log("Hola Mundo");<br>
+                    }<br><br>
+                    //o se puede asignar cualquier sentencia que al ser cumplida hará que se ejecute el código<br><br>
+                    var mensaje = true;<br>
+                    var mensaje2 = false;<br><br>
+                    if(!mensaje && mensaje) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log("Hola mundo");<br>
+                    }
+
+                </p>
+            </div>
+            <p class="descripcion">
+                Si queremos que ejecute un código cuando la condición sea falsa usaremos la palabra clave else.
+            </p>
+            <div class="descripcion">
+                <p class="estilo-codigo"> if(condición) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                    }<br><br>
+                    else {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; ...<br>
+                    }
+
+                </p>
+            </div>
+            <p class="descripcion">
+                Cuando la condición no se cumple, es decir, si su valor es false, se ejecutan todas las instrucciones
+                contenidas en <span class="estilo-codigo">else { }</span>
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo"> var edad = 18;<br><br>
+
+                    if(edad >= 18) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; console.log("Adelante");<br>
+                    } else {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; console.log("Eres menor de edad");<br>
+                    }
+
+                </p>
+            </div>
+            <p class="descripcion">
+                En este caso, se mostraría el mensaje "Adelante".</p>
+            <p class="descripcion"> La estructura if...else se puede encadenar para realizar varias comprobaciones
+                seguidas:
+
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo"> if(edad &lt; 12) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log("Eres un niño");<br>
+                    } else if(edad &lt; 19) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log("Eres un adolescente");<br>
+                    } else if(edad &lt; 35) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log("Eres un adulto joven");<br>
+                    } else {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log("Eres mayor");<br>
+                    }
+
+
+                </p>
+            </div>
+            <h3 class="desc-titulo">Estructura Switch</h3>
+            <p class="descripcion">Esta estructura se utiliza cuando la condición que evaluamos puede tomar muchos
+                valores.
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">
+                    switch(dia) {<br>
+                    case 1: console.log("Lunes"); break;<br>
+                    case 2: console.log("Martes"); break;<br>
+                    case 3: console.log("Miércoles"); break;<br>
+                    case 4: console.log("Jueves"); break;<br>
+                    case 5: console.log("Viernes"); break;<br>
+                    }
+
+                </p>
+            </div>
+            <p class="descripcion">
+                La cláusula puede ser una expresión al igual que en la estructura if. El comportamiento de la estructura
+                switch es seguir evaluando cláusula por cláusula, aun cuando una de ellas haya cumplido la condición.
+                Para evitar ese comportamiento, es necesario utilizar la sentencia break en las cláusulas que deseemos
+                para que no se ejecute el resto.
+            </p>
+            <h3 class="desc-titulo">Estructura For</h3>
+            <p class="descripcion">Esta estructura permite realizar bucles. El bucle se repite mientras una condición se
+                siga cumpliendo y después de cada repetición, actualiza el valor de las variables que se utilizan en la
+                condición.<br>
+                En la inicialización se establecen los valores iniciales de las variables que controlan la repetición,
+                la condición es el único elemento que decide si continua o se detiene la repetición y la actualización
+                es el nuevo valor que se asigna después de cada repetición a las variables que controlan la repetición.
+
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">Let mensaje = “buenos días”<br><br>
+                    for(let i = 0; i &lt; 5; i++) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log(mensaje);<br>
+                    }
+
+                </p>
+            </div>
+            <p class="descripcion">
+                Los bucles se siguen ejecutando mientras se cumplan las condiciones y se dejan de ejecutar cuando la
+                condición no se cumpla. En este ejemplo, mientras la variable i valga menos de 5 el bucle se
+                ejecuta.<br>
+                Normalmente, la variable que controla los bucles for se llama <span class="estilo-codigo">i</span>. El
+                siguiente código recorre el Array y muestra cada dia de la semana.
+
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo"> var dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado",
+                    "Domingo"];<br><br>
+
+                    for(var i=0; i &lt; 7; i++) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; console.log(dias[i]);<br>
+                    }
+
+
+                </p>
+            </div>
+            <h3 class="desc-titulo">Estructura While</h3>
+            <p class="descripcion">
+                La estructura while ejecuta un bucle simple, mientras se cumpla la condición.
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">var cuenta = 0;<br><br>
+
+                    while(cuenta &lt; 7) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log("Mensaje " + cuenta);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;cuenta++;<br>
+                    }
+
+                </p>
+            </div>
+            <p class="descripcion">
+                Mientras la condición indicada se siga cumpliendo, repite la ejecución de las instrucciones definidas
+                dentro del bloque. Es importante modificar los valores de las variables incluidas dentro de la
+                condición, ya que otra manera, el bucle se repetiría infinitamente, bloqueando la ejecución del resto
+                del script.
+            </p>
+            <h3 class="desc-titulo">Estructura Do…While</h3>
+            <p class="descripcion">
+                La diferencia de esta estructura a la anterior es que el bloque del bucle se ejecuta la primera vez sin
+                comprobar la condición. Después el funcionamiento es idéntico al while.
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">var cuenta = 0;<br><br>
+                    do { console.log("Mensaje " + cuenta);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; cuenta++;<br>
+                    }while(cuenta &lt; 10); <br>
+
+                </p>
+            </div>
+            <h3 class="desc-titulo">Estructura For... In</h3>
+            <p class="descripcion">
+                Es una estructura de control derivada de for, implica el uso de objetos y sus propiedades, permitiendo
+                recorrer las propiedades de un objeto. En cada iteración, un nuevo nombre de propiedad del objeto es
+                asignado a la variable: Si se quiere recorrer todos los elementos que forman un array, la estructura
+                for...in es la mejor forma de hacerlo.
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">var dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado",
+                    "Domingo"];<br><br>
+
+                    for(i in dias) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; console.log(dias[i]);<br>
+                    }
+
+                </p>
+            </div>
+        </div>
+        <div id="funobjarr" class="contenedor-desc">
+            <h2 class="desc-titulo">Funciones, objetos y Arrays</h2>
+            <h3 class="desc-titulo">Funciones</h3>
+            <p class="descripcion">Las funciones en JavaScript se crean mediante la palabra reservada <span
+                    class="estilo-codigo">function</span>, seguida del nombre de la función. El nombre de la función
+                junto con sus argumentos entre paréntesis se utilizan para llamar a esa función cuando sea necesario. Se
+                les debe asignar un nombre único para poder utilizarlas dentro del código. Los símbolos { } se utilizan
+                para contener todas las instrucciones que pertenecen a la función.
+            </p>
+            <div class="descripcion">
+                <p class="estilo-codigo">function nuevoCliente (lista de argumentos) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;instrucciones<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return resultadoDeLasInstrucciones<br>
+                    }
+                </p>
+            </div>
+            <p class="descripcion">Tembién existen las funciones flecha, en donde lo anterior se puede expresar de la
+                siguiente forma:
+
+            </p>
+            <div class="descripcion">
+                <p class="estilo-codigo">let nuevoCliente = lista de argumentos => instrucciones
+
+                </p>
+            </div>
+            <h3 class="desc-titulo">Objetos</h3>
+            <p class="descripcion">Es una lista de varios elementos compuestos de un nombre y un valor. O un grupo de
+                propiedades y funciones a los que se accede a través de una clave. Las funciones, arrays, expresiones
+                regulares también son consideradas objetos.
+
+            </p>
+            <h4 class="desc-titulo">Ejemplo:</h4>
+            <div class="descripcion">
+                <p class="estilo-codigo">{type:"Fiat", model:"500", color:"white"};
+                </p>
+            </div>
+            <h3 class="desc-titulo">Arrays</h3>
+            <p class="descripcion">Se trata de una lista de elementos que contenemos entre los símbolos [] y separamos
+                con comas, en JS los arrays pueden contener varios tipos de expresiones. El primer valor recibe la
+                propiedad de nombre o índice '0', la segunda de '1', y así sucesivamente.
+            </p>
+            <div class="descripcion">
+                <p class="estilo-codigo"> [gato, perro, pez, 10, 5]
+                </p>
+            </div>
+        </div>
+
+        <div id="un1ejercicios" class="contenedor-desc">
+            <div class="cont-btn-ej">
+                <a class="boton-ej" onclick="cambiarTema(event, 'un1ejercicio1')">Alerta de un array</a>
+                <a class="boton-ej" onclick="cambiarTema(event, 'un1ejercicio2')">Contador</a>
+                <a class="boton-ej" onclick="cambiarTema(event, 'un1ejercicio3')">Marcador de Basket</a>
+            </div>
+        </div>
+        <div id="un1ejercicio1" class="contenedor-desc">
+            <div class="div-ejercicios">
+                <h2>Alerta de un array</h2>
+                <h3>Descripción:</h3>
+                <p>En este ejercicio vemos como crear una alerta con “alert()” . El mensaje que muestra esta ventana
+                    creada por el navegador consta un array de los días de la semana, concatenados para que cada uno
+                    aparezca en una nueva línea con el código “/n”. Utilizo un botón con “onclick” para llamar la
+                    función que contiene la alerta.</p>
+                <iframe src="ejerciciosjs/alerta-arrays/index.html"></iframe>
+                <div class="tabs2">
+                    <div class="boton-codigo">
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-1-html')">HTML</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-1-js')">JS</button>
+                    </div>
+                    <div class="cont-ej" id="ej-1-html">
+                        <p class="estilo-codigo">
+                            &lt;!DOCTYPE HTML&gt;<br>
+                            &lt;html&gt;<br>
+                            &nbsp;&nbsp;&lt;head&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset=&quot;utf-8&quot;&gt; <br>
+                            &nbsp;&nbsp;&lt;/head&gt;<br>
+                            &nbsp;&nbsp;&lt;body&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt; Alerta con un array de los dias de la
+                            semana&lt;/h1&gt;<br>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;button onclick= &quot;alerta()&quot;&gt;Muéstame los dias de la
+                            semana&lt;/button&gt;<br>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;script src=&quot;primero.js&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;<br>
+                            &nbsp;&nbsp;&lt;/body&gt;<br>
+                            &lt;/html&gt;<br>
+                        </p>
+                    </div>
+                    <div class="cont-ej" id="ej-1-js">
+                        <p class="estilo-codigo">
+                            let dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado",
+                            "Domingo"];<br><br>
+
+                            function alerta(){<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;alert("Los dias de la semana son: \n" + dias[0] + "\n"<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;+ dias[1] + "\n" + dias[2] + "\n" + dias[3] + <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"\n" + dias[4] + "\n" + dias[5] + "\n" + dias[6]);<br>
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="un1ejercicio2" class="contenedor-desc">
+            <div class="div-ejercicios">
+                <h2>Contador</h2>
+                <h3>Descripción:</h3>
+                <p>Con este ejercicio podemos contar el número de gatos que nos encontramos en cada barrio, por ejemplo,
+                    e ir guardando los resultados. Utilizo el operador de asignación abreviada “+=”, para ir
+                    incrementando el número cada vez que se presiona el botón, y otra función para guardar y reiniciar
+                    el contador.</p>
+                <iframe src="ejerciciosjs/contador/index.html"></iframe>
+                <div class="tabs2">
+                    <div class="boton-codigo">
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-2-html')">HTML</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-2-js')">JS</button>
+                    </div>
+                    <div class="cont-ej" id="ej-2-html">
+                        <p class="estilo-codigo">
+                            &lt;!DOCTYPE HTML&gt;<br>
+                            &lt;html&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;head&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset=&quot;utf-8&quot;&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;link
+                            rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/TO/Entrega TO Natalia
+                            Lovich/styles.css&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;/head&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;body&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt; Numero de gatos&lt;/h2&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2 id=&quot;contador-1&quot;&gt;0&lt;/h2&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button
+                            onclick=&quot;masUno()&quot;&gt;+1&lt;/button&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button id=&quot;reset&quot;
+                            onclick=&quot;save()&quot;&gt;Guardar&lt;/button&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2
+                            id=&quot;result&quot;&gt;Resultados:&lt;/h2&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script src=&quot;primero.js&quot;&gt;
+                            &lt;/script&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;/body&gt;<br>
+                            &lt;/html&gt;
+
+                        </p>
+                    </div>
+                    <div class="cont-ej" id="ej-2-js">
+                        <p class="estilo-codigo">
+                            let result = document.getElementById("result");<br>
+                            let contar = 0;<br>
+                            let totalContador = document.getElementById("contador-1");<br><br>
+                            function masUno(){<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;contar += 1;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;totalContador.textContent = contar;<br>
+                            }<br>
+                            function save(){<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;result.textContent += contar + " - ";<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;contar=0;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;totalContador.textContent =0;<br>
+                            }
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="un1ejercicio3" class="contenedor-desc">
+            <div class="div-ejercicios">
+                <h2>Marcador de Basket</h2>
+                <h3>Descripción:</h3>
+                <p>Este es un marcador para un juego de Basketball, se pueden ir sumando 1, 2 o 3 puntos a cada equipo
+                    gracias a las funciones que aumentan las cifras con el operador de asignación abreviada “+=”, y al
+                    terminar el juego se reinicia con el botón “Reset” que llama a la función “nuevoJuego()”.</p>
+                <iframe src="ejerciciosjs/basketpuntos/basket.html"></iframe>
+                <div class="tabs2">
+                    <div class="boton-codigo">
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-3-html')">HTML</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-3-css')">CSS</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-3-js')">JS</button>
+                    </div>
+                    <div class="cont-ej" id="ej-3-html">
+                        <p class="estilo-codigo">
+                            &lt;!DOCTYPE html&gt;<br>
+                            &lt;html&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&lt;head&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel=&quot;stylesheet&quot;
+                            href=&quot;basket.css&quot;&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;link
+                            href=&quot;http://fonts.cdnfonts.com/css/seven-segment&quot; rel=&quot;stylesheet&quot;&gt;
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset = "utf-8"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;/head&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;body&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;container&quot;&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+                            class=&quot;caja&quot;&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3
+                            class=&quot;team&quot;&gt;HOME&lt;/h3&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p
+                            id= &quot;puntos-home&quot; class=&quot;puntos&quot;&gt;0<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+                            class=&quot;buttons&quot;&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button
+                            id=&quot;masuno-home&quot; class =&quot;suma&quot;
+                            onclick=&quot;suma1Home()&quot;&gt;+1&lt;/button&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button
+                            id=&quot;masdos-home&quot; class =&quot;suma&quot;
+                            onclick=&quot;suma2Home()&quot;&gt;+2&lt;/button&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button
+                            id=&quot;mastres-home&quot; class =&quot;suma&quot;
+                            onclick=&quot;suma3Home()&quot;&gt;+3&lt;/button&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+                            class=&quot;caja&quot;&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3
+                            class=&quot;team&quot;&gt;GUEST&lt;/h3&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p
+                            id= &quot;puntos-guest&quot; class=&quot;puntos&quot;&gt;0<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+                            class=&quot;buttons&quot;&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button
+                            id=&quot;masuno-guest&quot; class
+                            =&quot;suma&quot;onclick=&quot;suma1Guest()&quot;&gt;+1&lt;/button&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button
+                            id=&quot;masuno-guest&quot; class
+                            =&quot;suma&quot;onclick=&quot;suma2Guest()&quot;&gt;+2&lt;/button&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button
+                            id=&quot;masuno-guest&quot; class
+                            =&quot;suma&quot;onclick=&quot;suma3Guest()&quot;&gt;+3&lt;/button&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+                            id=&quot;reset&quot;&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button
+                            id=&quot;reset-button&quot; class=&quot;reset-button&quot;
+                            onclick=&quot;nuevoJuego()&quot;&gt;Reset&lt;/button&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&lt;/body&gt; <br>
+                            &lt;/html&gt;
+
+                        </p>
+                    </div>
+                    <div class="cont-ej" id="ej-3-css">
+                        <p class="estilo-codigo">
+                            body {<br>
+                            &nbsp;&nbsp;&nbsp; margin: 0;<br>
+                            &nbsp;&nbsp;&nbsp; background-color:aliceblue;<br>
+                            &nbsp;&nbsp;&nbsp; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;<br>
+                            }<br>
+                            .container {<br>
+
+                            &nbsp;&nbsp;&nbsp; display:flex;<br>
+                            &nbsp;&nbsp;&nbsp; justify-content:center;<br>
+                            }<br>
+                            .caja{<br>
+                            &nbsp;&nbsp;&nbsp; background-color:rgb(33, 42, 85);<br>
+                            &nbsp;&nbsp;&nbsp; margin: 20px 0px 20px 0px;<br>
+                            &nbsp;&nbsp;&nbsp; padding: 40px;<br>
+
+                            }<br>
+                            .team {<br>
+                            &nbsp;&nbsp;&nbsp; text-align: center;<br>
+                            &nbsp;&nbsp;&nbsp; color:aliceblue;<br>
+                            &nbsp;&nbsp;&nbsp; font-size:2em; <br>
+                            &nbsp;&nbsp;&nbsp; padding: 0%;<br>
+                            &nbsp;&nbsp;&nbsp; margin: 0%;<br>
+                            }<br>
+                            .puntos {<br>
+                            &nbsp;&nbsp;&nbsp; font-family: 'Seven Segment', sans-serif;<br>
+                            &nbsp;&nbsp;&nbsp; font-size: 5em;<br>
+                            &nbsp;&nbsp;&nbsp; text-align: center;<br>
+                            &nbsp;&nbsp;&nbsp; font-weight: 200;<br>
+                            &nbsp;&nbsp;&nbsp; line-height: 110px;<br>
+                            &nbsp;&nbsp;&nbsp; height: 110px;<br>
+                            &nbsp;&nbsp;&nbsp; width: 130px;<br>
+                            &nbsp;&nbsp;&nbsp; background-color:rgb(0, 0, 0);<br>
+                            &nbsp;&nbsp;&nbsp; border-radius: 5px;<br>
+                            &nbsp;&nbsp;&nbsp; margin: 10px auto;<br>
+                            &nbsp;&nbsp;&nbsp; color: rgb(223, 14, 14);<br>
+                            }<br>
+                            .suma {<br>
+                            &nbsp;&nbsp;&nbsp; font-family: 'Seven Segment', sans-serif;<br>
+                            &nbsp;&nbsp;&nbsp; font-size:12pt;<br>
+                            &nbsp;&nbsp;&nbsp; text-align: center;<br>
+                            &nbsp;&nbsp;&nbsp; padding: 5px;<br>
+                            &nbsp;&nbsp;&nbsp; margin: 5px 0px;<br>
+                            &nbsp;&nbsp;&nbsp; height: 35px;<br>
+                            &nbsp;&nbsp;&nbsp; width:35px;<br>
+                            &nbsp;&nbsp;&nbsp; color:aliceblue;<br>
+                            &nbsp;&nbsp;&nbsp; border: 1px solid rgb(191, 197, 226);<br>
+                            &nbsp;&nbsp;&nbsp; border-radius: 4px;<br>
+                            &nbsp;&nbsp;&nbsp; background-color:rgb(33, 42, 85);<br>
+                            &nbsp;&nbsp;&nbsp; display: block;<br>
+                            &nbsp;&nbsp;&nbsp; box-shadow: 2px 2px #999;<br>
+                            &nbsp;&nbsp;&nbsp; cursor:pointer;<br>
+                            }<br>
+                            .suma:hover{<br>
+                            &nbsp;&nbsp;&nbsp; background-color:rgb(130, 136, 167); <br>
+                            }<br>
+                            .suma:active{<br>
+                            &nbsp;&nbsp;&nbsp; transform: translate(2px, 2px); <br>
+                            &nbsp;&nbsp;&nbsp; box-shadow: 0px 0px #666;<br>
+
+                            }<br>
+                            .buttons {<br>
+                            &nbsp;&nbsp;&nbsp; display: flex;<br>
+                            &nbsp;&nbsp;&nbsp; justify-content: space-around;<br>
+                            }<br>
+                            #reset {<br>
+                            &nbsp;&nbsp;&nbsp; position:absolute;<br>
+                            &nbsp;&nbsp;&nbsp; top:330px;<br>
+                            }<br>
+                            .reset-button {<br>
+                            &nbsp;&nbsp;&nbsp; font-size:12pt;<br>
+                            &nbsp;&nbsp;&nbsp; text-align: center;<br>
+                            &nbsp;&nbsp;&nbsp; text-transform:uppercase;<br>
+                            &nbsp;&nbsp;&nbsp; font-weight: 600;<br>
+                            &nbsp;&nbsp;&nbsp; padding: 5px;<br>
+                            &nbsp;&nbsp;&nbsp; margin: 5px 0px;<br>
+                            &nbsp;&nbsp;&nbsp; height: 35px;<br>
+                            &nbsp;&nbsp;&nbsp; color:aliceblue;<br>
+                            &nbsp;&nbsp;&nbsp; border: 1px solid rgb(191, 197, 226);<br>
+                            &nbsp;&nbsp;&nbsp; border-radius: 4px;<br>
+                            &nbsp;&nbsp;&nbsp; background-color:rgb(33, 42, 85);<br>
+                            &nbsp;&nbsp;&nbsp; display: block;<br>
+                            &nbsp;&nbsp;&nbsp; box-shadow: 2px 2px #999;<br>
+                            &nbsp;&nbsp;&nbsp; cursor:pointer;<br>
+
+                            }<br>
+                            .reset-button:hover{<br>
+                            &nbsp;&nbsp;&nbsp; background-color:rgb(130, 136, 167); <br>
+                            }<br>
+                            .reset-button:active{<br>
+                            &nbsp;&nbsp;&nbsp; transform: translate(2px, 2px);<br>
+                            &nbsp;&nbsp;&nbsp; box-shadow: 0px 0px #666;<br>
+
+                            }
+                        </p>
+                    </div>
+                    <div class="cont-ej" id="ej-3-js">
+                        <p class="estilo-codigo">
+                            let puntosHome = document.getElementById("puntos-home")<br>
+                            let puntosGuest = document.getElementById("puntos-guest")<br>
+                            let resetButton = document.getElementById("reset-button")<br>
+                            let contar = 0<br>
+                            let contar2 = 0<br><br>
+
+
+                            function suma1Home () {<br>
+
+                            &nbsp;&nbsp;&nbsp; contar += 1;<br>
+                            &nbsp;&nbsp;&nbsp; puntosHome.textContent = contar<br>
+                            }<br><br>
+
+                            function suma2Home () {<br>
+                            &nbsp;&nbsp;&nbsp; contar += 2;<br>
+                            &nbsp;&nbsp;&nbsp; puntosHome.textContent = contar<br>
+
+                            }<br><br>
+
+                            function suma3Home () {<br>
+                            &nbsp;&nbsp;&nbsp; contar += 3;<br>
+                            &nbsp;&nbsp;&nbsp; puntosHome.textContent = contar<br>
+
+                            }<br><br>
+
+                            function suma1Guest () {<br>
+
+                            &nbsp;&nbsp;&nbsp; contar2 += 1;<br>
+                            &nbsp;&nbsp;&nbsp; puntosGuest.textContent = contar2<br>
+
+                            }<br><br>
+
+                            function suma2Guest () {<br>
+                            &nbsp;&nbsp;&nbsp; contar2 += 2;<br>
+                            &nbsp;&nbsp;&nbsp; puntosGuest.textContent = contar2<br>
+
+                            }<br><br>
+
+                            function suma3Guest () {<br>
+                            &nbsp;&nbsp;&nbsp; contar2 += 3;<br>
+                            &nbsp;&nbsp;&nbsp; puntosGuest.textContent = contar2<br>
+
+                            }<br><br>
+
+                            function nuevoJuego() {<br>
+                            &nbsp;&nbsp;&nbsp; contar = 0;<br>
+                            &nbsp;&nbsp;&nbsp; contar2= 0;<br>
+                            &nbsp;&nbsp;&nbsp; puntosHome.textContent = 0;<br>
+                            &nbsp;&nbsp;&nbsp; puntosGuest.textContent = 0;<br>
+
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer>
+
+    </footer>
+
+</body>
+
+</html>

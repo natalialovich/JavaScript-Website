@@ -1,0 +1,370 @@
+/*Trabajo final. Presentado por Natalia Lovich para la asignatura de programación web de SEAS*/
+
+/*paleta
+#001219 azul oscuro
+#36555E gris oscuro 
+#4D817D gris medio
+#94D2BD azul claro
+#E7EDE1 gris claro
+#E9D8A6 champaña
+#AE2012 rojo 
+#AD3B11 rust
+
+#561815;
+
+
+*/
+* {
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color:#bdc9b2;
+    margin: 0;
+}
+
+/*esconde los elementos "contenedor-desc" excepto por el primero, ya la la función no es suficientemente rápida y el layout se desconfigura por un momento*/
+#sintaxYSem,
+#operadores,
+#estrDContr,
+#funobjarr,
+#CSS3,
+#un1ejercicios,
+#un1ejercicio1,
+#un1ejercicio2,
+#un1ejercicio3,
+#eventos,
+#un2ejercicios,
+#un5ejercicio, 
+#un2ejercicio1,
+#un2ejercicio2,
+#un2ejercicio3,
+#AJAX,
+#jQuery
+{
+    display: none;
+}
+
+header {
+    background-color:#94D2BD;
+    
+ 
+}
+
+h1 {
+    font-size: 54pt;
+    font-weight: 800;
+    background-color:#001219;
+    text-align: center;
+    padding: 70px 10px 22px 10px;
+    margin: 0px;
+    color:white;
+    text-shadow: 2px 2px 1px #AD3B11;
+}
+
+#subtitulo{
+    font-size:16pt;
+    color:#AD3B11;
+    margin:0 auto;
+    position: relative;
+    top:-36px;
+    left: 7%;
+    width: fit-content;
+}
+
+nav ul {
+    display: flex;
+    justify-content: right;
+    margin: 0 3%;
+}
+
+.nav-item {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 15px;
+    list-style: none;
+    padding: 0px;
+    margin: 0px 0px 0px -7px;
+    z-index: 25;
+    text-align: center;
+    box-shadow: 1px -1px 7px 2px #00121948;
+}
+
+.nav-item a {
+    border: 1px solid #94D2BD;
+    border-bottom: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 15px;
+    background-color: #36555E;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    color: #E7EDE1;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin: 0%;
+    padding: 10px 30px;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-item a:hover {
+    background-color: #4D817D;
+}
+
+.nav-item a:active {
+    background-color: #001219;
+    box-shadow: -2px 2px 2px #36555E inset, 2px 2px 2px #36555E inset;
+}
+
+.uno {
+    z-index: 50;
+}
+
+.dos {
+    z-index: 45;
+}
+
+.tres {
+    z-index: 40;
+}
+
+.cuatro {
+    z-index: 35;
+}
+
+.cinco {
+    z-index: 30;
+}
+
+.contenedor {
+    background-color: #001219;
+    padding: 3%;
+    margin-top: 0%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.contenedor-tabs {
+    background-color: #4D817D;
+    width: 15%
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown:hover .tab-secundaria {
+    display: block;
+}
+
+.tab-secundaria {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12pt;
+    font-weight: 400;
+    display: none;
+    background-color: #94D2BD;
+    color: #001219;
+    padding: 15px;
+    width: 87%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    align-self: flex-end;
+    border-radius: 5px;
+    border:1px;
+    border-style: solid solid none solid;
+    border-color:#36555e75;
+    box-shadow: inset 0px 1px 1px #94d2bd56;
+    transition: 0.3s;
+}
+
+.tab-secundaria:hover {
+    background-color: #AD3B11;
+}
+.tab-secundaria:active {
+    background-color:#AE2012;
+    color:#E7EDE1;
+    transition: 0.2s;
+}
+
+.tab {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12pt;
+    font-weight: 400;
+    display: block;
+    background-color:#4D817D;
+    color: #001219;
+    padding: 15px;
+    width: 100%;
+    border:1px;
+    border-style: solid solid none solid;
+    border-color:#36555E;
+    box-shadow: inset 0px 1px 1px #94d2bd56;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tab:hover {
+    background-color: #94D2BD;
+}
+
+.contenedor button.active {
+    background-color: #AE2012;
+    box-shadow: inset 0px 3px 6px #11181544;
+}
+
+.descripcion {
+    color: #36555E;
+    background-color: #E7EDE1;
+    padding: 2em 2em 1.5em 2em;
+}
+.descripcion::selection, .desc-titulo::selection, .lista-desc::selection{
+    background-color:#94D2BD;
+    color:#001219;
+}
+
+.desc-titulo {
+    color: #36555E;
+    background-color: #E7EDE1;
+    padding: 1em 1em 0em 2.4em;
+}
+
+.contenedor-desc {
+    border: 1px solid #94D2BD;
+    background-color: #94D2BD;
+    width: 80%;
+    padding: 5px;
+}
+
+.lista-desc {
+    padding-top: 1em;
+    padding-left: 0em;
+}
+
+.contenedor-desc ul {
+    color: #36555E;
+    background-color: #E7EDE1;
+    list-style: disc outside none;
+    padding: 1em 3% 0.5em 7%;
+}
+
+.contenedor-desc ol {
+    color: #36555E;
+    background-color: #E7EDE1;
+    list-style: number outside none;
+    padding: 1em 3% 1.5em 7%;
+}
+
+em {
+    font-weight: 700;
+}
+
+.estilo-codigo {
+    background-color: #0B1C22;
+    color: #94D2BD;
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    padding: 1px 5px;
+    font-size: 13.5px;
+    line-height: 20px;
+}
+.estilo-codigo::selection{
+    background-color: #AD3B11;
+    color:#E7EDE1;
+}
+
+.contenedor-desc table {
+    color: #36555E;
+    padding: 2em 2em 1.5em 2em;
+    border: 1px solid #001219;
+    border-collapse: collapse;
+    margin: 20px auto;
+
+}
+
+.contenedor-desc table td,
+.contenedor-desc table tr th,
+.contenedor-desc table tr td {
+    padding: 5px 10px;
+    border: 1px solid #001219;
+    border-collapse: collapse;
+
+}
+
+iframe {
+    display: inline-block;
+    background-color: #E7EDE1;
+    width: 59%;
+    min-height: 500px;
+    margin: 0;
+    padding: 10px;
+    ;
+    border-style: solid inset inset solid;
+    border-color: #4D817D #E9D8A6 #E9D8A6 #4D817D;
+}
+
+.tabs2 {
+    background-color: #4D817D;
+    display: inline-block;
+    vertical-align: top;
+    align-items: flex-start;
+    width: 40%;
+
+}
+
+.boton-codigo {
+    display: flex;
+
+}
+
+.boton-codigo button.active {
+    background-color: #E9D8A6;
+}
+
+.cont-btn-ej {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.boton-ej {
+    background-color: #AD3B11;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12pt;
+    font-weight: 400;
+    color: #E7EDE1;
+    padding: 15px;
+    margin: 40px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.boton-ej:hover {
+    background-color: #001219;
+}
+
+.cont-ej {
+    display: none;
+}
+figure{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+figure a, figcaption{
+    color: #36555E;
+    padding:1em;
+    margin: 4px auto;
+    align-content: center;
+    background-color:#E7EDE1;
+    border: 1px solid #11181544;
+}

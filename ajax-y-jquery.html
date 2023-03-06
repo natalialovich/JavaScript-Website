@@ -1,0 +1,475 @@
+<!DOCTYPE HTML>
+<!--Trabajo final. Presentado por Natalia Lovich para la asignatura de programación web de SEAS-->
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicios de JavaScript</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <!--enlace a la hoja de estilos-->
+    <link rel="stylesheet" href="styles.css">
+    <!--enlace a los scripts-->
+    <script src="mis-scripts.js"></script>
+    <!--Fuente para el encabezado de la página-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Roboto+Condensed&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1>JavaScript</h1>
+        <h3 id="subtitulo">Para programación web</h3>
+        <nav>
+            <ul>
+                <li class="nav-item uno"><a href="index.html">JavaScript</a></li>
+                <li class="nav-item dos"><a href="dom-y-eventos.html">DOM y Eventos</a></li>
+                <li class="nav-item tres"><a href="avanzado-en-js.html">Avanzado en JS</a></li>
+                <li class="nav-item cuatro"><a href="ajax-y-jquery.html">AJAX y jQuery</a></li>
+                <li class="nav-item cinco"><a href="html5-y-css3.html">HTML5 y CSS3</a></li>
+            </ul>
+        </nav>
+    </header>
+    <article class="contenedor">
+        <div class="contenedor-tabs">
+            <button id="default-tab" class="tab" onclick="cambiarTema(event, 'JSON')">JSON</button>
+            <button class="tab" onclick="cambiarTema(event, 'AJAX')">AJAX</button>
+            <button class="tab" onclick="cambiarTema(event, 'jQuery')">jQuery</button>
+            <div class="dropdown">
+                <button class="tab" id="tab-ejercicios"
+                    onclick="cambiarTema(event, 'un2ejercicios')">Ejercicios</button>
+                <a class="tab-secundaria" id="tab-ej-1" onclick="cambiarTema(event, 'un2ejercicio1')">Creador de
+                    Facturas</a>
+            </div>
+        </div>
+        <div id="JSON" class="contenedor-desc">
+            <h2 class="desc-titulo">JSON</h2>
+            <p class="descripcion">
+                "JavaScript Object Notation (JSON) es un formato basado en texto estándar para representar datos
+                estructurados en la sintaxis de objetos de JavaScript. Es comúnmente utilizado para transmitir datos en
+                aplicaciones web (por ejemplo: enviar algunos datos desde el servidor al cliente, así estos datos pueden
+                ser mostrados en páginas web, o vice versa). Se enfrentará a menudo con él, así que este artículo le
+                entrega todo lo que necesita saber para trabajar con JSON utilizando JavaScript, incluyendo el análisis
+                JSON para acceder a los datos en su interior, y cómo crear JSON." (fuente: MDN web docs).
+            </p>
+        </div>
+        <div id="AJAX" class="contenedor-desc">
+            <h2 class="desc-titulo">AJAX</h2>
+            <p class="descripcion">
+                "JavaScript Asíncrono + XML (AJAX) no es una tecnología por sí misma, es un término que describe un
+                nuevo modo de utilizar conjuntamente varias tecnologías existentes. Esto incluye: HTML o XHTML, CSS,
+                JavaScript, DOM, XML, XSLT, y lo más importante, el objeto XMLHttpRequest. Cuando estas tecnologías se
+                combinan en un modelo AJAX, es posible lograr aplicaciones web capaces de actualizarse continuamente sin
+                tener que volver a cargar la página completa. Esto crea aplicaciones más rápidas y con mejor respuesta a
+                las acciones del usuario."(fuente: MDN web docs).
+            </p>
+        </div>
+        <div id="jQuery" class="contenedor-desc">
+            <h2 class="desc-titulo">jQuery</h2>
+
+            <p class="descripcion">
+                "jQuery, en su núcleo, es una biblioteca de manipulación de Modelo de Objetos del Documento (DOM). El
+                DOM es una representación en estructura de árbol de todos los elementos de una página web. JQuery
+                simplifica la sintaxis para buscar, seleccionar y manipular estos elementos DOM. Por ejemplo, JQuery se
+                puede usar para encontrar un elemento en el documento con una determinada propiedad (por ejemplo, todos
+                los elementos con una etiqueta h1), cambiar uno o más de sus atributos (por ejemplo, color, visibilidad)
+                o hacer que responda a un evento (por ejemplo, un clic del ratón).<br><br>
+
+                jQuery también proporciona un paradigma para el manejo de eventos que va más allá de la selección y
+                manipulación básicas de elementos DOM. La asignación de eventos y la definición de la función de
+                devolución de llamada de eventos se realizan en un solo paso en una única ubicación en el código. JQuery
+                también pretende incorporar otra funcionalidad de JavaScript muy utilizada (por ejemplo, entradas y
+                salidas de fundido cuando se ocultan elementos, animaciones mediante la manipulación de las propiedades
+                de CSS)."(fuente: wikipedia)
+            </p>
+
+        </div>
+        <div id="un2ejercicios" class="contenedor-desc">
+            <div class="cont-btn-ej">
+                <a class="boton-ej" onclick="cambiarTema(event, 'un2ejercicio1')">Creador de Facturas</a>
+            </div>
+        </div>
+        <div id="un2ejercicio1" class="contenedor-desc">
+            <div class="div-ejercicios">
+                <h2>Creador de Facturas</h2>
+                <h3>Descripción:</h3>
+                <p>Aquí se genera una contraseña aleatoria al presional el botón naranja, esto se logra gracias al
+                    método Math.random(), que se utiliza en la función, con un loop de iteración que va asignando un
+                    carácter de la constante “characters”.</p>
+                <iframe src="ejerciciosjs/ajax/index.html"></iframe>
+                <div class="tabs2">
+                    <div class="boton-codigo">
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-1-html')">HTML</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-1-css')">CSS</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-1-js')">JS</button>
+                    </div>
+                    <div class="cont-ej" id="ej-1-html">
+                        <p class="estilo-codigo">
+                            &lt;!DOCTYPE html&gt;<br>
+                            &lt;html&gt;<br>
+                            <br>
+                            &lt;head&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;meta charset=&quot;utf-8&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;script
+                            src=&quot;https://ajax.googleapis.com/ajax/<br>libs/jquery/3.6.0/jquery.min.js&quot;&gt;&lt;/script&gt;<br>
+                            &lt;/head&gt;<br>
+                            <br>
+                            &lt;body&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;h2 class=&quot;titulo&quot;&gt;Creador de Facturas&lt;/h2&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;form id=&quot;formu&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;div class=&quot;caja&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;h3&gt;Empresa&lt;/h3&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;label class=&quot;desc&quot;
+                            for=&quot;nombre&quot;&gt;Nombre: &lt;/label&gt;&lt;input name=&quot;nombre&quot;
+                            id=&quot;nombre&quot; type=&quot;text&quot;&gt;&lt;br&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;label
+                            for=&quot;dir&quot;&gt;Dirección: &lt;/label&gt;&lt;input name=&quot;dir&quot;
+                            id=&quot;dir&quot; type=&quot;text&quot;&gt;&lt;br&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;label
+                            for=&quot;tel&quot;&gt;Teléfono: &lt;/label&gt;&lt;input name=&quot;tel&quot;
+                            id=&quot;tel&quot; type=&quot;text&quot;&gt;&lt;br&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;label
+                            for=&quot;nif&quot;&gt;Nif: &lt;/label&gt;&lt;input name=&quot;nif&quot; id=&quot;nif&quot;
+                            type=&quot;text&quot;&gt;&lt;br&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;div class=&quot;caja&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;h3&gt;Cliente&lt;/h3&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;label
+                            for=&quot;nombreC&quot;&gt;Nombre: &lt;/label&gt;&lt;input name=&quot;nombreC&quot;
+                            id=&quot;nombreC&quot; type=&quot;text&quot;&gt;&lt;br&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;label
+                            for=&quot;dirC&quot;&gt;Dirección: &lt;/label&gt;&lt;input name=&quot;dirC&quot;
+                            id=&quot;dirC&quot; type=&quot;text&quot;&gt;&lt;br&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;label
+                            for=&quot;telC&quot;&gt;Teléfono: &lt;/label&gt;&lt;input name=&quot;telC&quot;
+                            id=&quot;telC&quot; type=&quot;text&quot;&gt;&lt;br&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;label
+                            for=&quot;nifC&quot;&gt;Nif: &lt;/label&gt;&lt;input name=&quot;nifC&quot;
+                            id=&quot;nifC&quot; type=&quot;textC&quot;&gt;&lt;br&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;div class=&quot;caja&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;h3&gt;Productos&lt;/h3&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;label
+                            for=&quot;prod&quot;&gt;Producto: &lt;/label&gt;&lt;input class=&quot;break&quot;
+                            name=&quot;prod&quot; id=&quot;prod1&quot; type=&quot;text&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;div&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&lt;p&gt;Cantidad:&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;p
+                            id=&quot;btn-p1&quot;class=&quot;btn-mas&quot;
+                            onclick=&quot;masUno(this)&quot;&gt;+&lt;/p&gt;&lt;input name=&quot;contar&quot;
+                            class=&quot;contar&quot; type=&quot;text&quot; value=&quot;0&quot;
+                            id=&quot;contador-1&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;label
+                            class=&quot;precio&quot; for=&quot;precio&quot;&gt;Precio: &lt;/label&gt;&lt;input
+                            class=&quot;precio&quot; name=&quot;precio&quot; id=&quot;precio1&quot;
+                            value=&quot;0&quot;<br>
+                            type=&quot;textC&quot;&gt;&lt;br&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/div&gt;<br>
+                            <br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;label
+                            for=&quot;prod&quot;&gt;Producto: &lt;/label&gt;&lt;input class=&quot;break&quot;
+                            name=&quot;prod&quot; id=&quot;prod2&quot; type=&quot;text&quot;&gt;&lt;br&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;div&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&lt;p&gt;Cantidad:&lt;/p&gt;<br>
+                            &lt;p id=&quot;btn-p2&quot; class=&quot;btn-mas&quot;
+                            onclick=&quot;masUno(this)&quot;&gt;+&lt;/p&gt;&lt;input name=&quot;contar&quot;
+                            class=&quot;contar&quot; type=&quot;text&quot; value=&quot;0&quot;
+                            id=&quot;contador-2&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;label
+                            class=&quot;precio&quot; for=&quot;precio&quot;&gt;Precio: &lt;/label&gt;&lt;input
+                            class=&quot;precio&quot; name=&quot;precio&quot; id=&quot;precio2&quot;
+                            value=&quot;0&quot;<br>
+                            type=&quot;textC&quot;&gt;&lt;br&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/div&gt;<br>
+                            <br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;label
+                            for=&quot;prod&quot;&gt;Producto: &lt;/label&gt;&lt;input class=&quot;break&quot;
+                            name=&quot;prod&quot; id=&quot;prod3&quot; type=&quot;text&quot;&gt;&lt;br&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;div&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&lt;p&gt;Cantidad:&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;p
+                            id=&quot;btn-p3&quot; class=&quot;btn-mas&quot;
+                            onclick=&quot;masUno(this)&quot;&gt;+&lt;/p&gt;&lt;input name=&quot;contar&quot;
+                            class=&quot;contar&quot; type=&quot;text&quot; value=&quot;0&quot;
+                            id=&quot;contador-3&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;label
+                            class=&quot;precio&quot; for=&quot;precio&quot;&gt;Precio: &lt;/label&gt;&lt;input
+                            class=&quot;precio&quot; name=&quot;precio&quot; id=&quot;precio3&quot;
+                            value=&quot;0&quot;<br>
+                            type=&quot;textC&quot;&gt;&lt;br&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&lt;button class=&quot;btn-crear&quot;
+                            onclick=&quot;valida()&quot;&gt;Crear Factura&lt;/button&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;/form&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;<br>
+                            &lt;/body&gt;<br>
+                            <br>
+                            &lt;/html<br>
+                        </p>
+                    </div>
+                    <div class="cont-ej" id="ej-1-css">
+                        <p class="estilo-codigo">
+                            body {<br>
+                            &nbsp;&nbsp;&nbsp;background-color: rgb(204, 193, 185);<br>
+                            &nbsp;&nbsp;&nbsp;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+                            sans-serif;<br>
+                            &nbsp;&nbsp;&nbsp;padding: 20px;<br>
+                            }<br>
+                            #formu{<br>
+                            &nbsp;&nbsp;&nbsp;display:flex;<br>
+                            &nbsp;&nbsp;&nbsp;flex-wrap: wrap;<br>
+                            &nbsp;&nbsp;&nbsp;justify-content:space-evenly;<br>
+                            }<br>
+                            .caja{<br>
+                            &nbsp;&nbsp;&nbsp;display:block;<br>
+                            &nbsp;&nbsp;&nbsp;padding:5px;<br>
+                            &nbsp;&nbsp;&nbsp;border-bottom: 2px solid #ccc;<br>
+                            }<br>
+                            h2{<br>
+                            &nbsp;&nbsp;&nbsp;background-color:darkslategrey;<br>
+                            &nbsp;&nbsp;&nbsp;color:ghostwhite;<br>
+                            &nbsp;&nbsp;&nbsp;font-size: 20pt;<br>
+                            &nbsp;&nbsp;&nbsp;font-weight: 400;<br>
+                            &nbsp;&nbsp;&nbsp;margin:0 auto 10px auto;<br>
+                            &nbsp;&nbsp;&nbsp;text-align: center;<br>
+                            &nbsp;&nbsp;&nbsp;border-bottom:4px rgb(33, 59, 57) solid;<br>
+                            &nbsp;&nbsp;&nbsp;flex-basis: 100%;<br>
+                            }<br>
+                            h3{<br>
+                            &nbsp;&nbsp;&nbsp;padding: 5px;<br>
+                            &nbsp;&nbsp;&nbsp;font-size: 16pt;<br>
+                            &nbsp;&nbsp;&nbsp;color:darkgreen;<br>
+                            }<br>
+                            label{<br>
+                            &nbsp;&nbsp;&nbsp;display: inline-block;<br>
+                            &nbsp;&nbsp;&nbsp;padding: 5px 0px;<br>
+                            &nbsp;&nbsp;&nbsp;width: 70px; <br>
+                            }<br>
+                            <br>
+                            div{<br>
+                            &nbsp;&nbsp;&nbsp;display:flex;<br>
+                            &nbsp;&nbsp;&nbsp;align-items: baseline;<br>
+                            &nbsp;&nbsp;&nbsp;}<br>
+                            <br>
+                            .btn-mas{<br>
+                            &nbsp;&nbsp;&nbsp;background-color: darkslategray;<br>
+                            &nbsp;&nbsp;&nbsp;color: ghostwhite;<br>
+                            &nbsp;&nbsp;&nbsp;display:inline-block;<br>
+                            &nbsp;&nbsp;&nbsp;margin: 0 10px;<br>
+                            &nbsp;&nbsp;&nbsp;border: 1px darkslategray solid;<br>
+                            &nbsp;&nbsp;&nbsp;padding: 0 8px;<br>
+                            &nbsp;&nbsp;&nbsp;transition: 0.2s;<br>
+                            &nbsp;&nbsp;&nbsp;box-shadow: 1px 1px #666;<br>
+                            }<br>
+                            .btn-mas:hover{<br>
+                            &nbsp;&nbsp;&nbsp;background-color: darkgreen;<br>
+                            &nbsp;&nbsp;&nbsp;cursor: pointer;<br>
+                            }<br>
+                            .btn-mas:active{<br>
+                            &nbsp;&nbsp;&nbsp;background-color: brown;<br>
+                            &nbsp;&nbsp;&nbsp;transform: translate(1px, 1px);<br>
+                            &nbsp;&nbsp;&nbsp;box-shadow: 0px 0px;<br>
+                            }<br>
+                            .contar{<br>
+                            &nbsp;&nbsp;&nbsp;max-width:40px;<br>
+                            &nbsp;&nbsp;&nbsp;margin:0 10px;<br>
+                            }<br>
+                            .precio{<br>
+                            &nbsp;&nbsp;&nbsp;max-width:50px;<br>
+                            }<br>
+                            .btn-crear{<br>
+                            &nbsp;&nbsp;&nbsp;background-color: darkslategrey;<br>
+                            &nbsp;&nbsp;&nbsp;color:ghostwhite;<br>
+                            &nbsp;&nbsp;&nbsp;border: 1px rgb(33, 59, 57) solid;<br>
+                            &nbsp;&nbsp;&nbsp;padding:5px 10px;<br>
+                            &nbsp;&nbsp;&nbsp;font-size: 14pt;<br>
+                            &nbsp;&nbsp;&nbsp;margin: 20px;<br>
+                            &nbsp;&nbsp;&nbsp;text-transform: uppercase;<br>
+                            &nbsp;&nbsp;&nbsp;box-shadow: 1px 1px gray;<br>
+                            &nbsp;&nbsp;&nbsp;cursor: pointer;<br>
+                            &nbsp;&nbsp;&nbsp;transition: 0.8s;<br>
+                            &nbsp;&nbsp;&nbsp;height: fit-content;<br>
+                            &nbsp;&nbsp;&nbsp;text-align: center;<br>
+                            &nbsp;&nbsp;&nbsp;flex-grow: 0.1;<br>
+                            &nbsp;&nbsp;&nbsp;align-self:center;<br>
+                            &nbsp;&nbsp;&nbsp;flex-basis: 100% ;<br>
+                            }<br>
+                            .btn-crear:active{<br>
+                            &nbsp;&nbsp;&nbsp;transform: translate(1px, 1px); <br>
+                            &nbsp;&nbsp;&nbsp;box-shadow: 0px 0px #666;<br>
+                            }<br>
+                            .btn-crear:hover{<br>
+                            &nbsp;&nbsp;&nbsp;background-color:darkgreen;<br>
+                            }<br>
+                            .print{<br>
+                            &nbsp;&nbsp;&nbsp;padding:5px;<br>
+                            &nbsp;&nbsp;&nbsp;text-transform: capitalize;<br>
+                            &nbsp;&nbsp;&nbsp;line-height: 180%;<br>
+                            }<br>
+                            #container{<br>
+                            &nbsp;&nbsp;&nbsp;display:flex;<br>
+                            &nbsp;&nbsp;&nbsp;flex-wrap: wrap;<br>
+                            &nbsp;&nbsp;&nbsp;justify-content:space-evenly;<br>
+                            }<br>
+                        </p>
+                    </div>
+                    <div class="cont-ej" id="ej-1-js">
+                        <p class="estilo-codigo">
+                            window.onload = ()=&gt; {<br>
+                            &nbsp;&nbsp;&nbsp;valida;<br>
+                            &nbsp;&nbsp;&nbsp;masUno;<br>
+                            &nbsp;&nbsp;&nbsp;total;<br>
+                            &nbsp;&nbsp;&nbsp;printFact;<br>
+                            &nbsp;&nbsp;&nbsp;var formu = document.querySelector(&quot;#formu&quot;);<br>
+                            }<br>
+                            <br>
+                            //función para aumentar la cantidad del producto<br>
+                            let contar = 0;<br>
+                            let contar2 = 0;<br>
+                            let contar3 = 0;<br>
+                            <br>
+                            function masUno(id) {<br>
+                            &nbsp;&nbsp;&nbsp;let totalContador = id;<br>
+                            &nbsp;&nbsp;&nbsp;let sib = totalContador.nextElementSibling;<br>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;switch (sib.id) {<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;case &quot;contador-1&quot;:<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; sib.addEventListener(&quot;change&quot;, () =&gt;
+                            contar = parseFloat(sib.value));<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; contar += 1;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; sib.value = contar; break;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;case &quot;contador-2&quot;:<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; sib.addEventListener(&quot;change&quot;, () =&gt;
+                            contar2 = parseFloat(sib.value));<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; contar2 += 1;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; sib.value = contar2; break;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;case &quot;contador-3&quot;:<br>
+                            &nbsp;&nbsp;&nbsp; sib.addEventListener(&quot;change&quot;, () =&gt; contar3 =
+                            parseFloat(sib.value));<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; contar3 += 1;<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; sib.value = contar3; break;<br>
+                            }<br>
+                            }<br>
+                            //objeto factura<br>
+                            var factura = {<br>
+                            &nbsp;&nbsp;&nbsp;empresa: {<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; nombre: &quot;&quot;,<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; direccion: &quot;&quot;,<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; telefono: &quot;&quot;,<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; nif: &quot;&quot;<br>
+                            &nbsp;&nbsp;&nbsp;},<br>
+                            &nbsp;&nbsp;&nbsp;cliente: {<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; nombre: &quot;&quot;,<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; direccion: &quot;&quot;,<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; telefono: &quot;&quot;,<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; nif: &quot;&quot;<br>
+                            &nbsp;&nbsp;&nbsp;},<br>
+                            &nbsp;&nbsp;&nbsp;productos: [<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;{ descripcion: &quot;&quot;, cantidad: 1, precio: 0
+                            },<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;{ descripcion: &quot;&quot;, cantidad: 1, precio: 0
+                            },<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;{ descripcion: &quot;&quot;, cantidad: 1, precio: 0
+                            }<br>
+                            &nbsp;&nbsp;&nbsp;],<br>
+                            &nbsp;&nbsp;&nbsp;informacion: {<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; baseImponible: 0,<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; iva: 0.21,<br>
+                            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;total: 0<br>
+                            &nbsp;&nbsp;&nbsp;}<br>
+                            };<br>
+                            <br>
+                            function valida() {<br>
+                            &nbsp;&nbsp;&nbsp;formu.addEventListener(&quot;submit&quot;, function (event) {
+                            event.preventDefault() });<br>
+                            &nbsp;&nbsp;&nbsp;datos = $(&#39;form&#39;).serializeArray();<br>
+                            &nbsp;&nbsp;&nbsp;factura.empresa.nombre = datos[0].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.empresa.direccion = datos[1].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.empresa.telefono = datos[2].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.empresa.nif = datos[3].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.cliente.nombre = datos[4].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.cliente.direccion = datos[5].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.cliente.telefono = datos[6].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.cliente.nif = datos[7].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.productos[0].descripcion = datos[8].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.productos[0].cantidad = datos[9].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.productos[0].precio = datos[10].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.productos[1].descripcion = datos[11].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.productos[1].cantidad = datos[12].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.productos[1].precio = datos[13].value<br>
+                            &nbsp;&nbsp;&nbsp;factura.productos[2].descripcion = datos[14].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.productos[2].cantidad = datos[15].value;<br>
+                            &nbsp;&nbsp;&nbsp;factura.productos[2].precio = datos[16].value;<br>
+                            &nbsp;&nbsp;&nbsp;total();<br>
+                            &nbsp;&nbsp;&nbsp;printFact()<br>
+                            }<br>
+                            <br>
+                            // Cálculo del total <br>
+                            function total() {<br>
+                            &nbsp;&nbsp;&nbsp;for (var i = 0; i &lt; factura.productos.length; i++) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;factura.informacion.baseImponible +=
+                            parseInt(factura.productos[i].cantidad, 10) * parseFloat(factura.productos[i].precio,
+                            10);<br>
+                            &nbsp;&nbsp;&nbsp;}<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;factura.informacion.total =
+                            factura.informacion.baseImponible + parseFloat((factura.informacion.baseImponible *
+                            factura.informacion.iva).toFixed(2));<br>
+                            console.log(factura.informacion.total)<br>
+                            <br>
+                            }<br>
+                            console.log(factura.cliente)<br>
+                            function printFact() {<br>
+                            &nbsp;&nbsp;&nbsp;formu.style.display = &quot;none&quot;<br>
+                            &nbsp;&nbsp;&nbsp;const generaHtml =<br>
+                            `&lt;div class=&quot;caja&quot;&gt;<br>
+                            &lt;h2&gt;Empresa&lt;/h2&gt;<br>
+                            &lt;p
+                            class=&quot;print&quot;&gt;${JSON.<br>stringify(factura.empresa).replace(/[&quot;&<br>#39;{}]/g,
+                            &quot; &quot;).replace(/[,]/g, &<br>#39;&lt;br&gt;&#39;)}&lt;/p&gt;<br>
+                            &lt;/div&gt;<br>
+                            &lt;div class=&quot;caja&quot;&gt;<br>
+                            &lt;h2&gt;Cliente&lt;/h2&gt;<br>
+                            &lt;p
+                            class=&quot;print&quot;&gt;${JSON.<br>stringify(factura.cliente).replace(/[&quot;&<br>#39;{}]/g,
+                            &quot; &quot;).replace(/[,]/g, &<br>#39;&lt;br&gt;&#39;)}&lt;/p&gt;<br>
+                            &lt;/div&gt;<br>
+                            &lt;div class=&quot;caja&quot;&gt;<br>
+                            &lt;h2&gt;Factura&lt;/h2&gt;<br>
+                            &lt;h3&gt;Productos:&lt;/h3&gt;<br>
+                            &lt;p
+                            class=&quot;print&quot;&gt;${JSON.<br>stringify(factura.productos).replace(/[\[\]&<br>#39;&quot;&#39;{}]/g,
+                            &quot; &quot;).replace<br>(/[,]/g, &#39;&lt;br&gt;&#39;)}&lt;/p&gt;<br>
+                            &lt;h3&gt;Total:&lt;/h3&gt;<br>
+                            &lt;p
+                            class=&quot;print&quot;&gt;${JSON.<br>stringify(factura.informacion).replace(/[&<br>quot;&#39;{}]/g,
+                            &quot; &quot;).replace(/<br>[,]/g, &#39;&lt;br&gt;&#39;).replace(/[e]/g, &#39;e
+                            &#39;)}&lt;/p&gt;<br>
+                            &lt;/div&gt;<br>
+                            &lt;p id=&quot;imprimir&quot; class=&quot;btn-crear&quot;&gt;Imprimir&lt;/p&gt;<br>
+                            &lt;p id=&quot;n-fact&quot; class=&quot;btn-crear&quot;&gt;Nueva factura&lt;/p&gt;`;<br>
+                            <br>
+                            document.getElementById(&#39;container&#39;).innerHTML = generaHtml;<br>
+                            let nFact = document.getElementById(&#39;n-fact&#39;);<br>
+                            nFact.addEventListener(&#39;click&#39;, ()=&gt;location.reload());<br>
+                            document.getElementById(&#39;imprimir&#39;).<br>addEventListener(&#39;click&#39;,
+                            ()=&gt;window.print())<br>
+                            <br>
+                            }<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</body>
+
+</html>

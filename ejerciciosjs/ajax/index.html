@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <h2 class="titulo">Creador de Facturas</h2>
+    <form id="formu">
+        <div class="caja">
+            <h3>Empresa</h3>
+            <label class="desc" for="nombre">Nombre: </label><input name="nombre" id="nombre" type="text"><br>
+            <label for="dir">Dirección: </label><input name="dir" id="dir" type="text"><br>
+            <label for="tel">Teléfono: </label><input name="tel" id="tel" type="text"><br>
+            <label for="nif">Nif: </label><input name="nif" id="nif" type="text"><br>
+        </div>
+        <div class="caja">
+            <h3>Cliente</h3>
+            <label for="nombreC">Nombre: </label><input name="nombreC" id="nombreC" type="text"><br>
+            <label for="dirC">Dirección: </label><input name="dirC" id="dirC" type="text"><br>
+            <label for="telC">Teléfono: </label><input name="telC" id="telC" type="text"><br>
+            <label for="nifC">Nif: </label><input name="nifC" id="nifC" type="textC"><br>
+        </div>
+        <div class="caja">
+            <h3>Productos</h3>
+            <label for="prod">Producto: </label><input class="break" name="prod" id="prod1" type="text">
+            <div>
+                <p>Cantidad:</p>
+                <p id="btn-p1"class="btn-mas" onclick="masUno(this)">+</p><input name="contar" class="contar" type="text" value="0" id="contador-1">
+                <label class="precio" for="precio">Precio: </label><input class="precio" name="precio" id="precio1" value="0"
+                    type="textC"><br>
+            </div>
+
+            <label for="prod">Producto: </label><input class="break" name="prod" id="prod2" type="text"><br>
+            <div>
+                <p>Cantidad:</p>
+                <p id="btn-p2" class="btn-mas" onclick="masUno(this)">+</p><input name="contar" class="contar" type="text" value="0" id="contador-2">
+                <label class="precio" for="precio">Precio: </label><input class="precio" name="precio" id="precio2" value="0"
+                    type="textC"><br>
+            </div>
+
+            <label for="prod">Producto: </label><input class="break" name="prod" id="prod3" type="text"><br>
+            <div>
+                <p>Cantidad:</p>
+                <p id="btn-p3" class="btn-mas" onclick="masUno(this)">+</p><input name="contar" class="contar" type="text" value="0" id="contador-3">
+                <label class="precio" for="precio">Precio: </label><input class="precio" name="precio" id="precio3" value="0"
+                    type="textC"><br>
+            </div>
+        </div>
+        <button class="btn-crear" onclick="valida()">Crear Factura</button>
+    </form>
+    <div id="container"></div>
+</body>
+
+</html

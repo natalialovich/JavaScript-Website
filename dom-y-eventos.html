@@ -1,0 +1,596 @@
+<!DOCTYPE HTML>
+<!--Trabajo final. Presentado por Natalia Lovich para la asignatura de programación web de SEAS-->
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicios de JavaScript</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <!--enlace a la hoja de estilos-->
+    <link rel="stylesheet" href="styles.css">
+    <!--enlace a los scripts-->
+    <script src="mis-scripts.js"></script>
+    <!--Fuente para el encabezado de la página-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1>JavaScript</h1>
+        <h3 id = "subtitulo">Para programación web</h3>
+        <nav>
+            <ul>
+                <li class="nav-item uno"><a href="index.html">JavaScript</a></li>
+                <li class="nav-item dos"><a href="dom-y-eventos.html">DOM y Eventos</a></li>
+                <li class="nav-item tres"><a href="avanzado-en-js.html">Avanzado en JS</a></li>
+                <li class="nav-item cuatro"><a href="ajax-y-jquery.html">AJAX y jQuery</a></li>
+                <li class="nav-item cinco"><a href="html5-y-css3.html">HTML5 y CSS3</a></li>
+            </ul>
+        </nav>
+    </header>
+    <article class="contenedor">
+        <div class="contenedor-tabs">
+            <button id="default-tab" class="tab" onclick="cambiarTema(event, 'dom')">DOM</button>
+            <button class="tab" onclick="cambiarTema(event, 'eventos')">Eventos</button>
+            <div class="dropdown">
+                <button class="tab" id="tab-ejercicios"
+                    onclick="cambiarTema(event, 'un2ejercicios')">Ejercicios</button>
+                <a class="tab-secundaria" id="tab-ej-1" onclick="cambiarTema(event, 'un2ejercicio1')">Generador de
+                    contraseñas</a>
+                <a class="tab-secundaria" id="tab-ej-2" onclick="cambiarTema(event, 'un2ejercicio2')">Mostrar y
+                    ocultar</a>
+                <a class="tab-secundaria" id="tab-ej-3" onclick="cambiarTema(event, 'un2ejercicio3')">Ratón y
+                    teclado</a>
+            </div>
+        </div>
+        <div id="dom" class="contenedor-desc">
+            <h2 class="desc-titulo">Que es el DOM</h2>
+            <p class="descripcion">
+                Document Object Model o DOM nos permite acceder y manipular las páginas HTML. Se diseñó originalmente
+                para manipular de forma sencilla los documentos XML.<br> <br>
+                Se trata de un estándar de W3C, es una interfaz de programación para los documentos HTML y XML que
+                representa el documento de forma estructurada (de árbol) y delimita de qué forma los programas pueden
+                acceder para modificar su estructura, estilo y contenido. El DOM da una representación del documento
+                como un grupo de nodos y objetos que tienen propiedades y métodos. <br> <br>
+                El DOM es una representación completamente orientada al objeto de la página web y puede ser modificado
+                con un lenguaje de script como JavaScript.
+
+            </p>
+            <h2 class="desc-titulo">Árbol de Nodos</h2>
+            <p class="descripcion">
+                Con JavaScript podemos manipular las páginas web accediendo a los “nodos” del DOM para transformarlos de
+                forma dinámica. <br> <br>
+                Los navegadores transforman el documento html de forma automática y nos permiten utilizar las
+                herramientas de DOM. El DOM transforma todos los documentos HTML en un conjunto de elementos llamados
+                nodos, que están interconectados y que representan los contenidos de las páginas web y las relaciones
+                entre ellos. Se describe como "árbol de nodos" debido a su estructura. <br> <br>
+            </p>
+            <div class="descripcion">
+                <figure>
+                    <a href="https://www.w3schools.com/js/js_htmldom.asp" target="_blank"><img src="./Images/nodos.gif"
+                            alt="árbol de nodos"></a>
+                    <figcaption>Árbol de nodos, fuente: W3schools.com</figcaption>
+                </figure>
+            </div>
+            <h4 class="desc-titulo">Algunos de los tipos de nodos mas importantes son </h4>
+            <ul class="descripcion">
+                <li class="lista-desc">Document: nodo raíz del que derivan todos los demás nodos del árbol.</li>
+                <li class="lista-desc">Element: representa cada una de las etiquetas HTML. Se trata del único nodo que
+                    puede contener atributos y el único del que pueden derivar otros nodos.</li>
+                <li class="lista-desc">Attribute: se define un nodo de este tipo para representar cada uno de los
+                    atributos de las etiquetas HTML, es decir, uno por cada par atributo=valor.</li>
+                <li class="lista-desc">Text: nodo que contiene el texto encerrado por una etiqueta HTML.</li>
+                <li class="lista-desc">Comment: representa los comentarios incluidos en la página HTML.</li>
+            </ul>
+            <h3 class="desc-titulo">Metodos y propiedades más utilizados</h3>
+            <h4 class="desc-titulo">Métodos:</h4>
+            <ul class="descripcion">
+                <li class="lista-desc"><strong>document.getElementById(id):</strong> Encuentra un elemento por su id.
+                </li>
+                <li class="lista-desc"><strong>document.getElementsByTagName(name):</strong> Encuentra un elemento por
+                    su
+                    tag name.
+                </li>
+                <li class="lista-desc"><strong>document.getElementsByClassName(name):</strong> Encuentra un elemento por
+                    su class name.
+                </li>
+                <li class="lista-desc"><strong>document.createElement(element):</strong> Crea un elemento</li>
+                <li class="lista-desc"><strong>document.removeChild(element):</strong> Remueve un elemento.</li>
+                <li class="lista-desc"><strong>document.appendChild(element):</strong> Añade un elemento</li>
+                <li class="lista-desc"><strong>document.replaceChild(new, old):</strong> Remplaza un elemento</li>
+                <li class="lista-desc"><strong>document.write(text):</strong> Escribe dentro del domumento HTML</li>
+                <li class="lista-desc"><strong>element.addEventListener(type, listener):</strong> Añade a un elemento
+                    para que realice
+                    una función al interactuar con el.</li>
+
+            </ul>
+            <h4 class="desc-titulo">Propiedades:</h4>
+            <ul>
+                <li class="lista-desc"><strong>element.innerHTML = new html content:</strong> Cambia el HTML dentro de
+                    un
+                    elemento</li>
+                <li class="lista-desc"><strong>element.attribute = new value: </strong> Cambia el valor del atributo de
+                    un
+                    elemento</li>
+                <li class="lista-desc"><strong>element.style.property = new style:</strong> Cambia el estilo de un
+                    elemento
+                </li>
+            </ul>
+        </div>
+        <div id="eventos" class="contenedor-desc">
+            <h2 class="desc-titulo">Eventos</h2>
+            <p class="descripcion">
+                Los eventos de JavaScript permiten la interacción de los usuarios con una web a través de JavaScript. La
+                pulsación de una tecla, hacer click o la carga una página se consideran eventos. <br><br>
+                En la versión 4 del estándar HTML se introdujo el modelo simple de eventos que se considera parte del
+                nivel más básico de DOM. Sus características son limitadas, pero es el único modelo que es compatible
+                con todos los navegadores y por lo tanto, el único que permite crear aplicaciones que funcionan de la
+                misma manera en todos los navegadores.
+            </p>
+
+            <h3 class="desc-titulo">TIPOS DE EVENTOS</h3>
+            <p class="descripcion">
+                El nombre de los eventos se construye mediante el prefijo on, seguido del nombre de la acción asociada
+                al evento. Por ejemplo : “onclick”.
+
+            </p>
+            <h4 class="desc-titulo">Eventos más importantes definidos por JavaScript:</h4>
+            <div class="descripcion">
+                <table class="descripcion">
+                    <tbody>
+                        <tr>
+                            <td><code>onblur</code></td>
+                            <td>Un elemento pierde el foco</td>
+                            <td><code>&lt;button&gt;</code>,&nbsp;<code>&lt;input&gt;</code>,&nbsp;<code>&lt;label&gt;</code>,&nbsp;<code>&lt;select&gt;</code>,&nbsp;<code>&lt;textarea&gt;</code>,&nbsp;<code>&lt;body&gt;</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>onchange</code></td>
+                            <td>Un elemento se modifica</td>
+                            <td><code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;textarea&gt;</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>onclick</code></td>
+                            <td>Pulsar y soltar el rat&oacute;n</td>
+                            <td>Todos los elementos</td>
+                        </tr>
+                        <tr>
+                            <td><code>ondblclick</code></td>
+                            <td>Pulsar dos veces seguidas con el rat&oacute;n</td>
+                            <td>Todos los elementos</td>
+                        </tr>
+                        <tr>
+                            <td><code>onfocus</code></td>
+                            <td>Un elemento obtiene el foco</td>
+                            <td><code>&lt;button&gt;</code>,&nbsp;<code>&lt;input&gt;</code>,&nbsp;<code>&lt;label&gt;</code>,&nbsp;<code>&lt;select&gt;</code>,&nbsp;<code>&lt;textarea&gt;</code>,&nbsp;<code>&lt;body&gt;</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>onkeydown</code></td>
+                            <td>Pulsar una tecla y no soltarla</td>
+                            <td>Elementos de formulario y&nbsp;<code>&lt;body&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>onkeypress <strong>OBSOLETO</strong></code></td>
+                            <td>Pulsar una tecla</td>
+                            <td>Elementos de formulario y&nbsp;<code>&lt;body&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>onkeyup</code></td>
+                            <td>Soltar una tecla pulsada</td>
+                            <td>Elementos de formulario y&nbsp;<code>&lt;body&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>onload</code></td>
+                            <td>P&aacute;gina cargada completamente</td>
+                            <td><code>&lt;body&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>onmousedown</code></td>
+                            <td>Pulsar un bot&oacute;n del rat&oacute;n y no soltarlo</td>
+                            <td>Todos los elementos</td>
+                        </tr>
+                        <tr>
+                            <td><code>onmousemove</code></td>
+                            <td>Mover el rat&oacute;n</td>
+                            <td>Todos los elementos</td>
+                        </tr>
+                        <tr>
+                            <td><code>onmouseout</code></td>
+                            <td>El rat&oacute;n &quot;sale&quot; del elemento</td>
+                            <td>Todos los elementos</td>
+                        </tr>
+                        <tr>
+                            <td><code>onmouseover</code></td>
+                            <td>El rat&oacute;n &quot;entra&quot; en el elemento</td>
+                            <td>Todos los elementos</td>
+                        </tr>
+                        <tr>
+                            <td><code>onmouseup</code></td>
+                            <td>Soltar el bot&oacute;n del rat&oacute;n</td>
+                            <td>Todos los elementos</td>
+                        </tr>
+                        <tr>
+                            <td><code>onreset</code></td>
+                            <td>Inicializar el formulario</td>
+                            <td><code>&lt;form&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>onresize</code></td>
+                            <td>Modificar el tama&ntilde;o de la ventana</td>
+                            <td><code>&lt;body&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>onselect</code></td>
+                            <td>Seleccionar un texto</td>
+                            <td><code>&lt;input&gt;</code>,&nbsp;<code>&lt;textarea&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>onsubmit</code></td>
+                            <td>Enviar el formulario</td>
+                            <td><code>&lt;form&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>onunload</code></td>
+                            <td>Se abandona la p&aacute;gina, por ejemplo al cerrar el navegador</td>
+                            <td><code>&lt;body&gt;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="descripcion">
+                Los eventos se utilizan a través de los manejadores de eventos, que pueden ser incluidos como atributo
+                de un elemento HTML o los Manejadores semánticos asignados mediante DOM sin necesidad de modificar el
+                código HTML de la página. <br> <br>
+                La diferencia entre estas dos formas que de la segunda (utilizando element.addEventListener(click,
+                miFuncion)) se pueden añadir multiples eventos a un solo elemento, mientras que si lo hacemos
+                adjuntandolo al atributo de un elemento sólo podemos usar uno ( onclick=”miFuncion()”).
+            </p>
+
+        </div>
+        <div id="un2ejercicios" class="contenedor-desc">
+            <div class="cont-btn-ej">
+                <a class="boton-ej" onclick="cambiarTema(event, 'un2ejercicio1')">Generador de contraseñas</a>
+                <a class="boton-ej" onclick="cambiarTema(event, 'un2ejercicio2')">Mostrar y ocultar</a>
+                <a class="boton-ej" onclick="cambiarTema(event, 'un2ejercicio3')">Ratón y teclado</a>
+            </div>
+        </div>
+        <div id="un2ejercicio1" class="contenedor-desc">
+            <div class="div-ejercicios">
+                <h2>Generador de contraseñas</h2>
+                <h3>Descripción:</h3>
+                <p>Aquí se genera una contraseña aleatoria al presional el botón naranja, esto se logra gracias al
+                    método Math.random(), que se utiliza en la función, con un loop de iteración que va asignando un
+                    carácter de la constante “characters”.</p>
+                <iframe src="ejerciciosjs/password generator/index.html"></iframe>
+                <div class="tabs2">
+                    <div class="boton-codigo">
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-1-html')">HTML</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-1-css')">CSS</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-1-js')">JS</button>
+                    </div>
+                    <div class="cont-ej" id="ej-1-html">
+                        <p class="estilo-codigo">
+                            &lt;!DOCTYPE html&gt;<br>
+                            &lt;html&gt;<br>
+
+                            &lt;head&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;meta charset = "utf-8"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;link rel=&quot;stylesheet&quot; href=&quot;index.css&quot;&gt;<br>
+                            &lt;/head&gt;<br>
+
+                            &lt;body&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;div id=&quot;caja-principal&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Genera una &lt;strong&gt;contraseña
+                            aleatoria&lt;/strong&gt;&lt;/h1&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Nunca vuelvas a usar una contraseña
+                            insegura&lt;/h2&gt;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button id=&quot;generate-password&quot;
+                            onclick=&quot;randomPassword()&quot;&gt;Generar
+                            contraseñas&lt;/button&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;line&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p
+                            id=&quot;result-one&quot;&gt;&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p id=&quot;result-two&quot;&gt;&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;script type=&quot;text/JavaScript&quot;
+                            src=&quot;index.js&quot;&gt;&lt;/script&gt;<br>
+                            &lt;/body&gt;<br>
+
+                            &lt;/html&gt;
+                        </p>
+                    </div>
+                    <div class="cont-ej" id="ej-1-css">
+                        <p class="estilo-codigo">
+                            body {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;margin: 0;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-color: #1C1C1C;<br>
+                            }<br>
+                            <br>
+                            #caja-principal {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-color: #1F2937;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;height: 550px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;width: 550px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;margin: 0 auto;<br>
+                            }<br>
+                            <br>
+                            strong {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;color: #FBBF24;<br>
+                            }<br>
+                            <br>
+                            h1 {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;position: relative;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;width: 354px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;height: 80px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;left: 52px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;top: 115px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-style: normal;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-weight: 800;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-size: 36px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;line-height: 40px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;letter-spacing: -0.025em;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;color: #FFFFFF;<br>
+                            }<br>
+                            <br>
+                            h2 {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;position: relative;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;left: 52px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;top: 105px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-style: normal;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-weight: 100;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-size: 20px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;line-height: 28px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;color: #D5D4D8<br>;
+                            }<br>
+                            <br>
+                            #generate-password {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;position: relative;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;left: 52px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;top: 130px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;color: white;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;padding: 9px 17px 9px 15px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;gap: 12px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;cursor: pointer;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;width: 191px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;height: 42px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background: #B45309;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;border-style: none;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;border-radius: 6px;<br>
+                            }<br>
+                            <br>
+                            .line {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;border: 1px solid #2F3E53;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;position: relative;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;width: 446px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;height: 0px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;top: 150px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;left: 52px;<br>
+                            }<br>
+                            <br>
+                            p {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;position: relative;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;top: 200px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;left: 52px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;display: inline-block;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;margin: 0 20px 0 0;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;width: 211px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;height: 39px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;background-color: #273549;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;border-radius: 6px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;color: #FBBF24;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;text-align: center;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;line-height: 39px;<br>
+                            }<br>
+                        </p>
+                    </div>
+                    <div class="cont-ej" id="ej-1-js">
+                        <p class="estilo-codigo">
+                            const characters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N",
+                            "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f",
+                            "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x",
+                            "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "~", "`", "!", "@", "#", "$",
+                            "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]", ",", "|", ":", ";",
+                            "&lt;", "&gt;", ".", "?","/"];<br>
+                            let resultOne = document.getElementById("result-one")<br>
+                            let resultTwo = document.getElementById("result-two")<br><br>
+
+                            function randomPassword() {<br>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;resultTwo.textContent = randomOne()<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;resultOne.textContent = randomOne()<br>
+
+                            }<br><br>
+
+                            function randomOne() {<br><br>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;let randomPw = "";<br><br>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;for (let i = 0; i < 9; i++) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;randomPw +=
+                                characters[Math.floor(Math.random() * characters.length)]<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+                                &nbsp;&nbsp;&nbsp;&nbsp;return randomPw<br><br>
+
+                                }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="un2ejercicio2" class="contenedor-desc">
+            <div class="div-ejercicios">
+                <h2>Mostrar y ocultar</h2>
+                <h3>Descripción:</h3>
+                <p>En este ejercicio se utilizan los elementos del DOM para que cuando se pinche sobre un enlace, se
+                    oculte el texto que se encuentra arriba de éste, y cuando se vuelva a pinchar sobre el mismo enlace,
+                    se muestre otra vez esa sección.</p>
+                <iframe src="ejerciciosjs/tabs/index.html"></iframe>
+                <div class="tabs2">
+                    <div class="boton-codigo">
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-2-html')">HTML</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-2-js')">JS</button>
+                    </div>
+                    <div class="cont-ej" id="ej-2-html">
+                        <p class="estilo-codigo">
+                            &lt;!DOCTYPE HTML&gt;<br>
+                            &lt;html lang=&quot;es&quot;&gt;<br>
+                            &lt;head&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;meta charset=&quot;utf-8&quot;&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;<br>
+                            &lt;/head&gt;<br>
+                            &lt;body&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;article&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p id=&quot;contenidos_1&quot;&gt;
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium commodo metus
+                            pharetra interdum. Sed
+                            gravida, ex at mollis tempus, massa massa porta nibh, ut eleifend velit purus eu sapien. Ut
+                            ut mollis urna.
+                            Etiam id eros pretium, accumsan risus quis, tristique purus. Vivamus vestibulum tincidunt
+                            libero in
+                            scelerisque.<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;a id=&quot;enlace_1&quot;
+                            href=&quot;#&quot; onclick=&quot;muestraOculta(&#39;1&#39;); return false;&quot;&gt;Ocultar
+                            contenidos&lt;/a&gt;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p id=&quot;contenidos_2&quot;&gt;<br>
+                            Vivamus interdum leo sapien, et molestie erat ullamcorper eu. Quisque porttitor nibh et
+                            maximus auctor.
+                            Etiam vitae aliquam dolor, ac eleifend odio. Praesent felis sapien, accumsan sed placerat
+                            non, bibendum at
+                            dolor. Vivamus nulla mi, semper at ipsum ut, mollis consequat neque. Duis sit amet
+                            sollicitudin velit.
+                            Quisque et efficitur neque.<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;a id=&quot;enlace_2&quot;
+                            href=&quot;#&quot; onclick=&quot;muestraOculta(&#39;2&#39;); return false;&quot;&gt;Ocultar
+                            contenidos&lt;/a&gt;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p id=&quot;contenidos_3&quot;&gt;<br>
+                            Ut consequat mauris et quam tincidunt vestibulum. Sed turpis sapien, mollis non ex eu,
+                            malesuada tincidunt
+                            neque. Vivamus feugiat tortor ante, eu ullamcorper sapien dictum at. Suspendisse ac
+                            tincidunt orci, at
+                            congue sem. Vivamus ac magna tristique, egestas lacus eu, consequat leo. Pellentesque
+                            habitant morbi
+                            tristique senectus et netus et malesuada fames ac turpis egestas. Quisque quis efficitur
+                            massa.<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;a id=&quot;enlace_3&quot;
+                            href=&quot;#&quot; onclick=&quot;muestraOculta(&#39;3&#39;); return false;&quot;&gt;Ocultar
+                            contenidos&lt;/a&gt;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;/article&gt;<br>
+                            &lt;/body&gt;<br>
+                            &lt;/html&gt;<br>
+                        </p>
+                    </div>
+                    <div class="cont-ej" id="ej-2-js">
+                        <p class="estilo-codigo">
+                            function muestraOculta(id) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;var elemento = document.getElementById('contenidos_' + id);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;var enlace = document.getElementById('enlace_' + id);<br>
+                            <br>
+                            if (elemento.style.display == "" || elemento.style.display == "block") {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;elemento.style.display = "none";<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;enlace.textContent = 'Mostrar contenidos';<br>
+                            }<br>
+                            else {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;enlace.textContent = 'Ocultar contenidos';<br>
+                            }<br>
+                            }<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="un2ejercicio3" class="contenedor-desc">
+            <div class="div-ejercicios">
+                <h2>Ratón y teclado:</h2>
+                <h3>Descripción:</h3>
+                <p>Esta aplicación web muestra al usuario la posición del ratón, mostrando las coordenadas del eje X y el eje Y. También al pulsar una tecla muestra información sobre ésta.</p>
+                <iframe src="ejerciciosjs/ratonyteclado/index.html"></iframe>
+                <div class="tabs2">
+                    <div class="boton-codigo">
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-3-html')">HTML</button>
+                        <button class="tab" onclick="cambiarTema2(event, 'ej-3-js')">JS</button>
+                    </div>
+                    <div class="cont-ej" id="ej-3-html">
+                        <p class="estilo-codigo">
+                            &lt;!DOCTYPE html&gt;<br>
+                            &lt;html lang="es"&gt;<br>
+
+                            &lt;head&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;meta charset="utf-8"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;script src="script.js" type="text/javascript"&gt;&lt;/script&gt;<br>
+                            &lt;/head&gt;<br>
+                            <br>
+                            &lt;body&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;div id="info"&gt;&lt;h1&gt;Mueve el ratón&lt;/h1&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;div id="info2"&gt;&lt;h1&gt;Pulsa una tecla&lt;/h1&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+                            &lt;/body&gt;<br>
+                            <br>
+                            &lt;/html&gt;<br>
+                        </p>
+                    </div>
+                    <div class="cont-ej" id="ej-3-js">
+                        <p class="estilo-codigo">
+                            document.onmousemove = posicionRaton<br>
+                            function posicionRaton(event) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;event = event;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;coordenadaX = event.clientX;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;coordenadaY = event.clientY;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;muestraInformacion(['Ratón', 'Posición: X: ' + coordenadaX + ' Y: '
+                            + &nbsp;&nbsp;&nbsp;&nbsp;coordenadaY]);<br>
+                            }<br>
+                            <br>
+
+                            document.onkeydown = infoTecla;<br>
+                            function infoTecla(event) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;var event = event;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;var caracter = event.charCode || event.keyCode;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;var letra = String.fromCharCode(caracter);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;var codigo = letra.charCodeAt(0);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;muestraInformacion2(['Teclado', 'Carácter [' + letra + ']', 'Código
+                            [' + &nbsp;&nbsp;&nbsp;&nbsp;codigo + ']']);<br>
+                            }<br>
+                            <br>
+
+                            function muestraInformacion(mensaje) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("info").innerHTML = '&lt;h1&gt;' +
+                            mensaje[0] + '&lt;/h1&gt;';<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;for (var i = 1; i &lt; mensaje.length; i++) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("info").innerHTML
+                            += '&lt;p&gt;' + mensaje[i] + '&lt;/p&gt;';<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                            }<br>
+                            <br>
+                            function muestraInformacion2(mensaje) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("info2").innerHTML = '&lt;h1&gt;' +
+                            mensaje[0] + '&lt;/h1&gt;';<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;for (var i = 1; i &lt; mensaje.length; i++) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("info2").innerHTML
+                            += '&lt;p&gt;' + mensaje[i] + '&lt;/p&gt;';<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                            }<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </article>
+    <footer>
+
+    </footer>
+
+</body>
+
+</html>
